@@ -3,707 +3,3108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuel d'Utilisation Détaillé - Desmarais & Gagné AI</title>
+    <title>Manuel d'Utilisation Complet - Constructo AI 3.0</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #00A971;
-            --primary-color-darker: #00673D;
-            --primary-color-light: #e6f7f1; /* Vert très pâle pour fonds discrets */
-            --primary-color-medium: #a5e9d0; /* Vert moyen pour accents */
-            --background-color: #F9FAFB;
-            --secondary-background-color: #FFFFFF;
-            --text-color: #374151;
-            --text-color-light: #6B7280;
+            --primary-color: #3B82F6;
+            --primary-light: #93C5FD;
+            --primary-lighter: #DBEAFE;
+            --primary-dark: #2563EB;
+            --secondary-color: #1F2937;
+            --success-color: #22C55E;
+            --warning-color: #F59E0B;
+            --danger-color: #EF4444;
+            --text-color: #1F2937;
+            --text-muted: #6B7280;
+            --background: #FAFBFF;
+            --card-bg: #FFFFFF;
             --border-color: #E5E7EB;
-            --border-radius-md: 0.5rem;
-            --box-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --border-radius: 0.75rem;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
             --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: var(--font-family);
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 0;
-            font-size: 16px;
+            background-color: var(--background);
         }
 
         .container {
-            max-width: 950px; /* Légèrement plus large pour plus de contenu */
-            margin: 40px auto;
-            padding: 25px 35px;
-            background-color: var(--secondary-background-color);
-            border-radius: var(--border-radius-md);
-            box-shadow: var(--box-shadow-md);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        header {
-            text-align: center;
-            padding-bottom: 25px;
-            margin-bottom: 35px;
-            border-bottom: 3px solid var(--primary-color);
+        .header {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.3) 0%, #3B82F6 15%, #1F2937 85%, rgba(0, 0, 0, 0.4) 100%) !important;
+            padding: 35px 40px !important;
+            color: white !important;
+            text-align: center !important;
+            box-shadow: 0 8px 24px rgba(31, 41, 55, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2), 0 0 30px rgba(59, 130, 246, 0.2) !important;
+            animation: fadeIn 0.8s ease-out, subtle-header-pulse 4s infinite !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            animation: header-shine 4s infinite;
+            z-index: 1;
+        }
+        
+        .header h1, .header p {
+            position: relative !important;
+            z-index: 2 !important;
         }
 
-        header h1 {
-            color: var(--primary-color-darker);
-            font-size: 2.8em; /* Plus grand */
-            margin-bottom: 0.3em;
-            font-weight: 700;
+        .header h1 {
+            margin: 0 !important;
+            font-size: 2.5rem !important;
+            font-weight: 700 !important;
+            color: white !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+            margin-bottom: 1rem !important;
         }
 
-        header p {
-            color: var(--text-color-light);
-            font-size: 1.2em; /* Plus grand */
+        .header p {
+            margin-top: 12px !important;
+            margin-bottom: 0 !important;
+            font-size: 1.2rem !important;
+            color: rgba(255, 255, 255, 0.95) !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+            font-weight: 500 !important;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes subtle-header-pulse {
+            0% {
+                box-shadow: 0 8px 24px rgba(31, 41, 55, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2), 0 0 30px rgba(59, 130, 246, 0.2);
+            }
+            50% {
+                box-shadow: 0 8px 24px rgba(31, 41, 55, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2), 0 0 35px rgba(59, 130, 246, 0.3);
+            }
+            100% {
+                box-shadow: 0 8px 24px rgba(31, 41, 55, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2), 0 0 30px rgba(59, 130, 246, 0.2);
+            }
+        }
+        
+        @keyframes header-shine {
+            0%, 50% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .content {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
         }
 
         h2 {
-            color: var(--primary-color);
-            font-size: 2em; /* Ajusté */
-            margin-top: 3em;
-            margin-bottom: 1.2em;
-            padding-bottom: 0.4em;
-            border-bottom: 2px solid var(--primary-color-medium);
-            font-weight: 600;
+            font-size: 1.875rem;
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        h2::before {
-            margin-right: 0.4em;
-            font-size: 1.1em; /* Icône plus visible */
-        }
-        
         h3 {
-            color: var(--primary-color-darker);
-            font-size: 1.6em; /* Ajusté */
-            margin-top: 2em;
-            margin-bottom: 1em;
-            font-weight: 600;
-        }
-
-        h3::before {
-            margin-right: 0.4em;
-            font-size: 0.95em; /* Icône plus visible */
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-top: 1.5rem;
         }
 
         h4 {
-            color: var(--text-color);
-            font-size: 1.2em;
-            margin-top: 1.5em;
-            margin-bottom: 0.7em;
-            font-weight: 500;
-        }
-        h4::before {
-            content: "🔸";
-            margin-right: 0.5em;
-            color: var(--primary-color-medium);
+            font-size: 1.25rem;
+            color: var(--secondary-color);
         }
 
-
-        p, li {
-            color: var(--text-color);
-            margin-bottom: 1em; /* Plus d'espacement */
-            font-size: 1.05em; /* Légèrement plus grand pour lisibilité */
+        p, ul, ol {
+            margin-bottom: 1rem;
         }
 
-        ul, ol { /* Style commun pour listes */
-            padding-left: 30px;
-        }
-        
-        ul ul, ol ol { /* Sous-listes */
-            margin-top: 0.6em;
-            margin-bottom: 0.6em;
-        }
-        ul { list-style-type: disc; }
-        ol { list-style-type: decimal; }
-
-        code {
-            background-color: var(--primary-color-light);
-            color: var(--primary-color-darker);
-            padding: 0.25em 0.6em;
-            border-radius: 0.3rem;
-            font-family: "Menlo", "Consolas", "Liberation Mono", monospace;
-            font-size: 0.95em;
-            border: 1px solid #ccebe0; /* Bordure subtile */
+        ul, ol {
+            padding-left: 1.5rem;
         }
 
-        pre {
-            background-color: #2d3748;
-            color: #e2e8f0;
-            padding: 1.2em;
-            border-radius: var(--border-radius-md);
-            overflow-x: auto;
-            font-family: "Menlo", "Consolas", "Liberation Mono", monospace;
-            font-size: 0.95em;
-            margin: 1.2em 0;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-        }
-        pre code { /* Pour s'assurer que le code dans pre n'a pas de fond ou bordure double */
-            background-color: transparent;
-            padding: 0;
-            border: none;
-            font-size: inherit; /* Hérite la taille de pre */
-        }
-
-        .note, .tip, .warning {
-            padding: 1.2em 1.5em;
-            margin: 1.8em 0;
-            border-radius: var(--border-radius-md);
-            font-size: 1em;
-        }
-
-        .note {
-            background-color: var(--primary-color-light);
-            border-left: 5px solid var(--primary-color);
-        }
-        .tip {
-            background-color: #e6f4ff; /* Bleu clair */
-            border-left: 5px solid #3b82f6; /* Bleu */
-        }
-        .warning {
-            background-color: #fffbeb; /* Jaune clair */
-            border-left: 5px solid #f59e0b; /* Orange/Jaune */
-        }
-
-        .note strong, .tip strong, .warning strong {
-            font-weight: 600;
-        }
-        .note strong { color: var(--primary-color-darker); }
-        .tip strong { color: #1e40af; } /* Bleu foncé */
-        .warning strong { color: #b45309; } /* Orange foncé */
-
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: var(--primary-color-darker);
-            text-decoration: underline;
-        }
-
-        .feature-card {
-            background-color: #fdfdff; /* Blanc très légèrement teinté */
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-md);
-            padding: 1.8em; /* Plus de padding */
-            margin-bottom: 1.8em;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.03);
-            transition: box-shadow 0.3s ease;
-        }
-        .feature-card:hover {
-            box-shadow: 0 5px 10px rgba(0,0,0,0.07);
-        }
-        .feature-card h3 { /* Titres dans les feature cards */
-            margin-top: 0;
-            border-bottom: 1px dashed var(--primary-color-medium);
-            padding-bottom: 0.4em;
+        li {
+            margin-bottom: 0.5rem;
         }
 
         .toc {
-            background-color: var(--primary-color-light);
-            border: 1px solid var(--primary-color-medium);
-            padding: 1.8em;
-            border-radius: var(--border-radius-md);
-            margin-bottom: 3em;
-        }
-        .toc h3 {
-            margin-top:0;
-            color: var(--primary-color-darker);
-            font-size: 1.5em; /* Ajusté */
-        }
-        .toc ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .toc ul li {
-            margin-bottom: 0.4em;
-        }
-        .toc ul li a {
-            display: block;
-            padding: 0.4em 0.2em;
-            transition: background-color 0.2s ease, padding-left 0.2s ease;
-            border-radius: 0.25rem;
-        }
-        .toc ul li a:hover {
-            background-color: #d0f0e6; /* Vert plus prononcé au survol */
-            padding-left: 0.8em;
-        }
-        .toc ul ul { /* Sous-TOC */
-            padding-left: 1.5em;
-            margin-top: 0.5em;
-        }
-        .toc ul ul li a {
-            font-size: 0.95em;
+            background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--card-bg) 100%);
+            border: 1px solid var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
 
+        .toc h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .toc-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .toc-link:hover {
+            background-color: var(--primary-lighter);
+            transform: translateX(4px);
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, var(--primary-lighter) 0%, var(--card-bg) 100%);
+            border: 1px solid var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .info-card h4 {
+            color: var(--primary-dark);
+            margin-top: 0;
+        }
+
+        .warning-card {
+            background: linear-gradient(135deg, #FEF3C7 0%, var(--card-bg) 100%);
+            border: 1px solid var(--warning-color);
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .success-card {
+            background: linear-gradient(135deg, #DCFCE7 0%, var(--card-bg) 100%);
+            border: 1px solid var(--success-color);
+            border-left: 4px solid var(--success-color);
+        }
+
+        .danger-card {
+            background: linear-gradient(135deg, #FEE2E2 0%, var(--card-bg) 100%);
+            border: 1px solid var(--danger-color);
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .code-block {
+            background: var(--secondary-color);
+            color: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            white-space: pre-wrap;
+        }
+
+        .inline-code {
+            background: #E5E7EB;
+            color: var(--secondary-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.8em 0;
-            box-shadow: var(--box-shadow-md);
-            border-radius: var(--border-radius-md);
-            overflow: hidden; /* Pour que le radius s'applique aux coins */
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
+
         th, td {
-            border: 1px solid var(--border-color);
-            padding: 0.9em 1.1em;
+            padding: 1rem;
             text-align: left;
-            font-size: 1em;
+            border-bottom: 1px solid var(--border-color);
         }
+
         th {
-            background-color: var(--primary-color-light);
-            color: var(--primary-color-darker);
+            background: var(--primary-lighter);
+            color: var(--primary-dark);
             font-weight: 600;
-            border-bottom: 2px solid var(--primary-color-medium);
-        }
-        tr:nth-child(even) td { /* Style pour les lignes paires */
-            background-color: #f8f9fa;
-        }
-        tr:hover td { /* Survol des lignes */
-            background-color: #eef7f4;
         }
 
-        footer {
+        tr:nth-child(even) {
+            background: #F8FAFC;
+        }
+
+        tr:hover {
+            background: var(--primary-lighter);
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 0.5rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #111827 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
             text-align: center;
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 2px solid var(--primary-color-medium);
-            color: var(--text-color-light);
-            font-size: 0.95em;
         }
-        footer p { font-size: 0.95em; } /* S'assurer que le p hérite bien */
 
-        /* Styles spécifiques pour les icônes emoji dans les titres */
-        #introduction h2::before { content: "👋 "; }
-        #interface h2::before { content: "🖥️ "; }
-        #fonctionnalites h2::before { content: "⚙️ "; }
-        #demarrage h2::before { content: "🚀 "; }
-        #depannage h2::before { content: "🛠️ "; }
-        #contact h2::before { content: "📧 "; }
-        #bonnes-pratiques h2::before { content: "💡 "; }
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 2rem 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-details {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Manuel d'Utilisation Détaillé</h1>
-            <p>Assistant Expert AI Desmarais & Gagné</p>
+        <header class="header">
+            <h1><span class="emoji">📖</span>Manuel d'Utilisation Complet</h1>
+            <p><strong>Constructo AI 3.0 - Assistant IA Spécialisé Construction Québec</strong></p>
+            <p>Créé par Sylvain Leduc - Expert en construction avec 20+ ans d'expérience québécoise</p>
+            <p><strong>Contact Support :</strong> (514) 820-1972 | <strong>Email :</strong> constructoai@gmail.com</p>
         </header>
 
-        <div class="toc">
-            <h3>Table des Matières</h3>
-            <ul>
-                <li><a href="#introduction">1. Introduction</a>
+        <div class="content">
+            <div class="toc">
+                <h3><span class="emoji">🏠</span>Table des Matières</h3>
+                <div class="toc-grid">
+                    <a href="#demarrage-rapide" class="toc-link">1. Démarrage Rapide</a>
+                    <a href="#interface-principale" class="toc-link">2. Interface Principale</a>
+                    <a href="#systeme-experts" class="toc-link">3. Système d'Experts IA</a>
+                    <a href="#fonctionnalites-chat" class="toc-link">4. Fonctionnalités Chat</a>
+                    <a href="#gestionnaire-projet" class="toc-link">5. Gestionnaire de Projet</a>
+                    <a href="#export-historique" class="toc-link">6. Export et Historique</a>
+                    <a href="#exemples-pratiques" class="toc-link">7. Exemples Pratiques</a>
+                    <a href="#depannage" class="toc-link">8. Dépannage</a>
+                    <a href="#annexes" class="toc-link">9. Annexes et Référence</a>
+                </div>
+            </div>
+
+            <section id="demarrage-rapide">
+                <h2><span class="emoji">🚀</span>1. DÉMARRAGE RAPIDE</h2>
+                
+                <h3>Première connexion</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🔐</span>Page de connexion</h4>
+                    <ol>
+                        <li><strong>Accès à l'application</strong>
+                            <ul>
+                                <li>Ouvrez votre navigateur web</li>
+                                <li>Allez sur l'URL fournie (ex: https://constructoai.ca)</li>
+                                <li>Vous arrivez sur la page d'accueil</li>
+                            </ul>
+                        </li>
+                        <li><strong>Page d'accueil interactive</strong>
+                            <div class="code-block">🏗️ Constructo AI 3.0
+━━━━━━━━━━━━━━━━━━━━━━━
+
+La plateforme intelligente qui révolutionne 
+vos projets de construction au Québec
+
+[Nos Solutions IA Clés]
+🚀 TakeOff AI | 📊 Project Manager AI | 📦 Inventory AI
+
+[Section Connexion]
+Mot de passe: [__________]
+[Se connecter]</div>
+                        </li>
+                        <li><strong>Saisie du mot de passe</strong>
+                            <ul>
+                                <li>Entrez le mot de passe fourni par votre administrateur</li>
+                                <li>Cliquez sur "Se connecter"</li>
+                                <li>En cas d'erreur, un message "Mot de passe incorrect" apparaît</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="success-card">
+                    <h4><span class="emoji">✅</span>Première connexion réussie</h4>
+                    <p>Félicitations ! Vous accédez maintenant à l'interface principale de Constructo AI 3.0.</p>
+                </div>
+
+                <h3>Tour de l'interface</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">📱</span>Vue d'ensemble</h4>
+                    <div class="code-block">╭─ [LOGO] Constructo AI ─────────────────────────────────╮
+│  ✨ Nouvelle Consultation                               │
+│  ──────────────────────────────────────────────────   │
+│  👤 PROFIL EXPERT                                      │
+│  [Entrepreneur Général ▼]                              │
+│  ──────────────────────────────────────────────────   │
+│  📄 ANALYSE FICHIERS                                   │
+│  [Choisir fichiers...] [🔍 Analyser]                  │
+│  ──────────────────────────────────────────────────   │
+│  🏗️ PROJETS                                           │
+│  Total: 3 | Actifs: 2                                 │
+│  [📊 Ouvrir Gestionnaire]                             │
+│  ──────────────────────────────────────────────────   │
+│  🔎 RECHERCHE WEB                                     │
+│  [Comment utiliser ▼]                                 │
+│  ──────────────────────────────────────────────────   │
+│  🕒 HISTORIQUE                                        │
+│  • Rénovation cuisine (hier)                          │
+│  • Fondation garage (3j)                              │
+│  ──────────────────────────────────────────────────   │
+│  📥 EXPORT                                            │
+│  [📄 Rapport HTML]                                   │
+│  ──────────────────────────────────────────────────   │
+│  [🚪 Déconnexion]                                     │
+╰────────────────────────────────────────────────────────╯
+
+╭─ CHAT PRINCIPAL ───────────────────────────────────────╮
+│  🏗️ Assistant: Entrepreneur Général                   │
+│  Votre expert en construction au Québec               │
+│  ════════════════════════════════════════════════════ │
+│                                                        │
+│  🏗️ Bonjour! Je suis votre expert Entrepreneur       │
+│     Général. Comment puis-je vous aider aujourd'hui?  │
+│                                                        │
+│     💡 Nouveauté: Gestionnaire de Projet dans         │
+│     la barre latérale !                               │
+│                                                        │
+│     Pour recherche web: /search votre question        │
+│                                                        │
+│  ════════════════════════════════════════════════════ │
+│  [Posez votre question ou tapez /search...]           │
+╰────────────────────────────────────────────────────────╯</div>
+                </div>
+
+                <h3>Première consultation</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🗣️</span>Exemple de première interaction</h4>
+                    <p><strong>Vous:</strong> "Bonjour, je veux construire une maison unifamiliale à Laval"</p>
+                    <p><strong>Assistant (Entrepreneur Général):</strong></p>
+                    <div class="code-block">🏗️ Excellent projet ! Pour une construction à Laval, voici les éléments clés à considérer :
+
+📋 INFORMATIONS REQUISES
+• Superficie souhaitée (ex: 1500-2500 pi²)
+• Budget approximatif disponible
+• Terrain déjà acquis ou à chercher
+• Style architectural préféré
+• Nombre de chambres/salles de bain
+
+🏛️ SPÉCIFICITÉS LAVAL
+• Règlements urbains stricts (Plan d'urbanisme 2019)
+• Permis requis: construction + SEPAQ si applicable
+• Contraintes zonage selon secteur
+• Raccordements municipaux disponibles
+
+💰 ESTIMATION PRÉLIMINAIRE (2025)
+Construction de base: 325-387$/pi²
+Terrain moyen: 150 000$ - 350 000$
+Frais connexes: 15-20% du projet
+
+Pouvez-vous me préciser la superficie et le budget envisagés ?</div>
+                </div>
+            </section>
+
+            <section id="interface-principale">
+                <h2><span class="emoji">🖥️</span>2. INTERFACE PRINCIPALE</h2>
+                
+                <h3>Navigation générale</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🧭</span>Zones principales</h4>
+                    <ol>
+                        <li><strong>Barre latérale gauche (Sidebar)</strong>
+                            <ul>
+                                <li>Outils principaux et navigation</li>
+                                <li>Toujours accessible</li>
+                                <li>Rétractable sur mobile</li>
+                            </ul>
+                        </li>
+                        <li><strong>Zone centrale (Main area)</strong>
+                            <ul>
+                                <li>Chat avec l'expert IA</li>
+                                <li>Ou gestionnaire de projet (mode plein écran)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Zone de saisie (Chat input)</strong>
+                            <ul>
+                                <li>Champ de texte pour vos questions</li>
+                                <li>Bouton d'envoi animé</li>
+                                <li>Support commandes spéciales</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📱</span>Navigation mobile</h4>
+                    <p>Sur mobile, la barre latérale s'adapte automatiquement :</p>
                     <ul>
-                        <li><a href="#objectif">1.1 Objectif du Manuel</a></li>
-                        <li><a href="#public-cible">1.2 Public Cible</a></li>
+                        <li>Icône "hamburger" pour ouvrir/fermer</li>
+                        <li>Interface tactile optimisée</li>
+                        <li>Boutons plus grands (44px minimum)</li>
                     </ul>
-                </li>
-                <li><a href="#demarrage">2. Démarrage Rapide</a>
+                </div>
+
+                <h3>Barre latérale</h3>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4><span class="emoji">✨</span>1. Nouvelle Consultation</h4>
+                        <div class="code-block">✨ Nouvelle Consultation
+━━━━━━━━━━━━━━━━━━━━━
+Réinitialise la conversation
+Garde le même expert actuel
+Efface l'historique de la session</div>
+                        <p><strong>Utilisation:</strong> Cliquez pour démarrer fresh, garde vos préférences d'expert, idéal entre différents projets.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">👤</span>2. Profil Expert</h4>
+                        <div class="code-block">👤 PROFIL EXPERT
+━━━━━━━━━━━━━━━━
+[Entrepreneur Général     ▼]
+━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Experts disponibles:
+• Entrepreneur Général (40 ans)
+• Électricien CMEQ (35 ans)
+• Plombier CMMTQ (35 ans)
+• Architecte OAQ (30 ans)
+• Expert Portes/Fenêtres (40 ans)
+• [... 55+ autres experts]</div>
+                        <p><strong>Navigation:</strong> Menu déroulant avec tous les experts, changement en temps réel, nouvelle consultation auto-créée.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">📄</span>3. Analyse Fichiers</h4>
+                        <div class="code-block">📄 ANALYSE FICHIERS
+━━━━━━━━━━━━━━━━━━━
+[Choisir fichiers...]
+[🔍 Analyser Fichiers]
+
+Formats supportés:
+• PDF (plans, devis)
+• Word (.docx)
+• Excel (.xlsx) - si activé
+• Images (JPG, PNG, WebP)
+• CSV (données)
+• Texte (.txt)</div>
+                        <p><strong>Processus:</strong> Sélectionnez fichiers → Bouton "Analyser" s'active → Cliquez pour analyser → Résultats dans le chat.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">🏗️</span>4. Projets (Aperçu)</h4>
+                        <div class="code-block">🏗️ PROJETS
+━━━━━━━━━━━━━
+Total: 3 | Actifs: 2
+
+🟢 Maison Brossard
+🟡 Rénov. Cuisine  
+✅ Garage Laval
+
+[📊 Ouvrir Gestionnaire]</div>
+                        <p><strong>Actions:</strong> Voir statistiques rapides, cliquer sur projet pour détails, ouvrir gestionnaire complet.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">🔎</span>5. Recherche Web</h4>
+                        <div class="code-block">🔎 RECHERCHE WEB
+━━━━━━━━━━━━━━━━━
+[Comment utiliser ▼]
+
+Syntaxe:
+/search [votre question]
+
+Exemples:
+/search normes RBQ 2025
+/search prix matériaux</div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">🕒</span>6. Historique</h4>
+                        <div class="code-block">🕒 HISTORIQUE
+━━━━━━━━━━━━━━━
+[Scroll vertical - max 300px]
+
+• Rénovation cuisine (🗑️)
+  Hier 14:30
+• Fondation garage (🗑️)  
+  Il y a 3 jours
+• Estimation toiture (🗑️)
+  La semaine dernière
+
+[Charger plus...]</div>
+                        <p><strong>Interactions:</strong> Clic sur nom → Charge conversation, Icône 🗑️ → Supprime (avec confirmation), Scroll infini pour historique long.</p>
+                    </div>
+                </div>
+
+                <h3>Zone de chat</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">💬</span>Système de bulles</h4>
+                    
+                    <h5>Bulle Utilisateur (Droite)</h5>
+                    <div class="code-block">                    ┌─────────────────────────────┐
+                    │ 👤 Combien coûte une       │
+                    │ fondation de 24x30 pieds ? │
+                    │                             │
+                    │ Hier 14:30                  │
+                    └─────────────────────────────┘▶</div>
+
+                    <h5>Bulle Expert (Gauche)</h5>
+                    <div class="code-block">◀┌─────────────────────────────────────────────────┐
+ │ 🏗️ Pour une fondation 24x30 pieds (720 pi²):   │
+ │                                                 │
+ │ 💰 ESTIMATION DÉTAILLÉE                        │
+ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                 │
+ │ • Excavation: 2,880$ (4$/pi²)                  │
+ │ • Coffrage: 7,200$ (10$/pi²)                   │
+ │ • Béton: 14,400$ (20$/pi²)                     │
+ │ • Finition: 7,200$ (10$/pi²)                   │
+ │ • Drain français: 3,600$ (5$/pi²)              │
+ │                                                 │
+ │ 🔢 TOTAL: 35,280$ (49$/pi²)                   │
+ │                                                 │
+ │ Hier 14:31                                      │
+ └─────────────────────────────────────────────────┘</div>
+
+                    <h5>Bulle Recherche Web (Centre)</h5>
+                    <div class="code-block">┌─────────────────────────────────────────────────────┐
+│ 🔎 Résultats recherche: "prix béton Québec 2025"   │
+│ ═══════════════════════════════════════════════════ │
+│                                                     │
+│ D'après les sources récentes:                       │
+│ • Béton prêt-à-verser: 180-220$/m³                 │
+│ • Hausse de 8% depuis 2024                         │
+│ • Surcharge transport: 15-25$/km                   │
+│                                                     │
+│ Sources: RBQ.gouv.qc.ca, Association Béton Québec  │
+│                                                     │
+│ Il y a 2 minutes                                    │
+└─────────────────────────────────────────────────────┘</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">⌨️</span>Champ de saisie avancé</h4>
+                    <div class="code-block">┌─────────────────────────────────────────────────────┐
+│ Posez votre question ou tapez /search [recherche]  │
+│ ┌─────────────────────────────────────────────────┐ │
+│ │ Quelle isolation pour mur sous-sol?            │🚀│
+│ └─────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────┘</div>
+                    <p><strong>Fonctionnalités:</strong></p>
                     <ul>
-                        <li><a href="#acces">2.1 Accès à l'application</a></li>
-                        <li><a href="#connexion">2.2 Connexion et Sécurité</a></li>
+                        <li>Auto-resize selon contenu</li>
+                        <li>Support multi-lignes (Shift+Enter)</li>
+                        <li>Bouton animé avec pulse</li>
+                        <li>Détection commandes spéciales</li>
                     </ul>
-                </li>
-                <li><a href="#interface">3. Exploration de l'Interface Utilisateur</a>
+                </div>
+            </section>
+
+            <section id="systeme-experts">
+                <h2><span class="emoji">🤖</span>3. SYSTÈME D'EXPERTS IA</h2>
+                
+                <h3>Sélection d'expert</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🎯</span>Comment choisir le bon expert</h4>
+                    
+                    <h5>Par Type de Question:</h5>
+                    
+                    <p><strong>Questions générales construction → Entrepreneur Général</strong></p>
+                    <div class="code-block">"Je veux rénover ma cuisine"
+"Combien coûte construire un garage?"
+"Quels permis pour un agrandissement?"</div>
+
+                    <p><strong>Questions techniques spécifiques → Expert spécialisé</strong></p>
+                    <div class="code-block">Électricité → "Électricien CMEQ"
+Plomberie → "Plombier CMMTQ" 
+Structure → "Ingénieur Structure"
+Fondation → "Expert Fondations"</div>
+
+                    <p><strong>Questions réglementaires → Experts légaux</strong></p>
+                    <div class="code-block">Conformité → "Expert RBQ & CCQ"
+Zonage → "Urbaniste"
+Contrats → "Avocat Droit Construction"</div>
+                </div>
+
+                <div class="warning-card">
+                    <h4><span class="emoji">🔄</span>Changement automatique suggéré</h4>
+                    <p>L'IA peut suggérer un changement d'expert :</p>
+                    <div class="code-block">👤 "Mon panneau électrique fait des étincelles"
+
+🏗️ Entrepreneur Général:
+"Cette question nécessite l'expertise de notre Électricien CMEQ 
+certifié. Voulez-vous que je vous transfère vers lui?"
+
+[Oui, changer d'expert] [Non, continuer ici]</div>
+                </div>
+
+                <h3>Types d'experts disponibles</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🏗️</span>EXPERTS PRINCIPAUX (Top 5)</h4>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4><span class="emoji">🏗️</span>1. Entrepreneur Général (40 ans)</h4>
+                        <div class="code-block">🎯 SPÉCIALITÉS
+• Gestion complète de projets
+• Estimation budgétaire précise
+• Coordination corps de métier
+• Conformité réglementaire
+• Construction résidentielle/commerciale
+
+💡 QUAND L'UTILISER
+• Questions générales construction
+• Estimations projets globaux
+• Planification et séquençage
+• Choix de sous-traitants
+• Problèmes multi-disciplinaires</div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">🚪</span>2. Expert Portes & Fenêtres (40 ans)</h4>
+                        <div class="code-block">🎯 SPÉCIALITÉS
+• 500+ produits catalogués
+• Installation spécialisée
+• Efficacité énergétique
+• Garanties et certifications
+• Réparation et remplacement
+
+💡 QUAND L'UTILISER
+• Choix portes/fenêtres
+• Problèmes d'étanchéité
+• Optimisation énergétique
+• Devis et installation
+• Maintenance et réparation</div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">⚡</span>3. Électricien CMEQ (35 ans)</h4>
+                        <div class="code-block">🎯 SPÉCIALITÉS
+• Code électrique québécois
+• Installation certifiée
+• Mise aux normes
+• Systèmes intelligents
+• Dépannage et maintenance
+
+💡 QUAND L'UTILISER
+• Problèmes électriques
+• Mise aux normes
+• Ajout circuits/prises
+• Systèmes domotiques
+• Inspection électrique</div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">🔧</span>4. Plombier CMMTQ (35 ans)</h4>
+                        <div class="code-block">🎯 SPÉCIALITÉS
+• Systèmes complets plomberie
+• Normes québécoises
+• Chauffage hydronique
+• Dépannage d'urgence
+• Installation sanitaire
+
+💡 QUAND L'UTILISER
+• Fuites et réparations
+• Installation sanitaires
+• Systèmes chauffage
+• Mise aux normes
+• Efficacité eau</div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4><span class="emoji">🏠</span>5. Architecte OAQ (30 ans)</h4>
+                        <div class="code-block">🎯 SPÉCIALITÉS
+• Design et conception
+• Plans et permis
+• Conformité codes
+• Efficacité énergétique
+• Projets sur mesure
+
+💡 QUAND L'UTILISER
+• Conception projets
+• Demande permis
+• Optimisation espaces
+• Design architectural
+• Solutions créatives</div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🔧</span>EXPERTS TECHNIQUES (Top 10)</h4>
                     <ul>
-                        <li><a href="#sidebar">3.1 Panneau Latéral (Sidebar) : Votre Centre de Contrôle</a></li>
-                        <li><a href="#chat-area">3.2 Zone de Chat Principale : Le Cœur de l'Interaction</a></li>
-                        <li><a href="#chat-input">3.3 Champ de Saisie : Communiquer avec l'IA</a></li>
+                        <li><strong>6. Ingénieur Structure:</strong> Calculs de charges, dimensionnement poutres/colonnes, modifications structurales, rapport d'ingénieur</li>
+                        <li><strong>7. Expert Fondations:</strong> Types de fondations, problèmes drainage, sols québécois, réparation fissures</li>
+                        <li><strong>8. Expert Toiture:</strong> Tous systèmes de toiture, étanchéité et isolation, réparations d'urgence, climat nordique</li>
+                        <li><strong>9. Expert CVCA/HVAC:</strong> Systèmes chauffage/ventilation, efficacité énergétique, thermopompes, qualité air intérieur</li>
+                        <li><strong>10. Expert Maçonnerie:</strong> Béton et pierre, briques et blocs, réparation fissures, techniques traditionnelles</li>
                     </ul>
-                </li>
-                <li><a href="#fonctionnalites">4. Maîtrise des Fonctionnalités Clés</a>
+                    <p><em>[... Continuer avec les 50+ autres experts ...]</em></p>
+                </div>
+
+                <h3>Changement d'expert</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🔄</span>Méthodes de changement</h4>
+                    
+                    <h5>1. Menu déroulant (Recommandé)</h5>
+                    <ol>
+                        <li>Cliquez sur le menu expert dans la sidebar</li>
+                        <li>Sélectionnez le nouvel expert</li>
+                        <li>Confirmation automatique</li>
+                        <li>Nouvelle consultation démarre</li>
+                    </ol>
+
+                    <h5>2. Demande dans le chat</h5>
+                    <div class="code-block">👤 "Peux-tu me transférer vers l'expert en plomberie?"
+
+🏗️ "Bien sûr! Je vous transfère vers notre Plombier CMMTQ..."
+
+[Changement automatique effectué]
+
+🔧 "Bonjour! Je suis maintenant votre expert en plomberie. 
+En quoi puis-je vous aider?"</div>
+
+                    <h5>3. Suggestion automatique</h5>
+                    <div class="code-block">👤 "Comment réparer une fuite dans le mur?"
+
+🏗️ "Cette question spécialisée serait mieux adressée par 
+notre expert plombier. Voulez-vous que je vous transfère?"
+
+[Accepter transfert] [Rester ici]</div>
+                </div>
+
+                <div class="success-card">
+                    <h4><span class="emoji">⚡</span>Changement intelligent</h4>
+                    <p>Le système conserve le contexte lors du changement :</p>
+                    <div class="code-block">AVANT (Entrepreneur Général):
+👤 "Je rénove ma salle de bain, budget 15000$"
+🏗️ "Excellent budget pour une rénovation complète..."
+
+APRÈS changement vers Plombier:
+🔧 "Je vois que vous rénovez une salle de bain avec 
+budget 15000$. Pour la plomberie spécifiquement..."</div>
+                </div>
+            </section>
+
+            <section id="fonctionnalites-chat">
+                <h2><span class="emoji">💬</span>4. FONCTIONNALITÉS CHAT</h2>
+                
+                <h3>Questions standards</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">💬</span>Types de questions supportées</h4>
+                    
+                    <h5>1. Questions d'estimation</h5>
+                    <div class="code-block">👤 "Combien coûte refaire une toiture de 1200 pi²?"
+
+🏗️ EXPERT TOITURE:
+💰 ESTIMATION DÉTAILLÉE - TOITURE 1200 PI²
+
+▣ BARDEAUX ARCHITECTURAUX
+• Matériaux: 4,800$ (4$/pi²)
+• Main-d'œuvre: 6,000$ (5$/pi²)
+• Sous-total: 10,800$
+
+▣ COMPOSANTS ADDITIONNELS  
+• Sous-toiture (Ice & Water): 1,080$ (0.9$/pi²)
+• Ventilation: 600$ (0.5$/pi²)
+• Solins et finition: 720$ (0.6$/pi²)
+
+🔢 TOTAL PROJET: 13,200$ (11$/pi²)
+📅 DURÉE: 3-5 jours selon météo
+⚠️ Prix variables selon pente et complexité</div>
+
+                    <h5>2. Questions techniques</h5>
+                    <div class="code-block">👤 "Quelle grosseur de poutre pour 20 pieds sans poteau?"
+
+🏗️ INGÉNIEUR STRUCTURE:
+📐 CALCUL POUTRE - PORTÉE 20 PIEDS
+
+📋 DONNÉES DE CONCEPTION
+• Portée libre: 20' (6.1m)
+• Charge assumée: Résidentielle standard
+• Charge vive: 40 PSF
+• Charge morte: 15 PSF
+• Facteur sécurité: 1.5
+
+🔢 SOLUTIONS RECOMMANDÉES
+1. LVL 2×12" (grade 2.0E)
+2. Poutre acier W10×12
+3. Bois massif 2×12" Douglas (grade Select)
+4. Poutre composite I-joist 16" spéciale
+
+⚠️ VALIDATION REQUISE
+Calcul final doit être validé par ingénieur selon
+Code National du Bâtiment.</div>
+
+                    <h5>3. Questions réglementaires</h5>
+                    <div class="code-block">👤 "Ai-je besoin d'un permis pour finir mon sous-sol?"
+
+⚖️ EXPERT RBQ & CCQ:
+📋 PERMIS SOUS-SOL - EXIGENCES RBQ
+
+✅ PERMIS REQUIS SI:
+• Ajout plomberie (salle de bain)
+• Modification électrique majeure
+• Changement utilisation (logement)
+• Ajout cloisons permanentes
+• Installation chauffage
+
+❌ PERMIS NON REQUIS:
+• Peinture et finition cosmétique
+• Pose plancher flottant
+• Installation éclairage simple
+• Rangements temporaires
+
+🏛️ DÉMARCHES MUNICIPALES
+1. Vérifier zonage municipal
+2. Demande permis ville
+3. Inspection RBQ si requis
+4. Certificat de conformité
+
+📞 CONTACT: Votre municipalité pour confirmer</div>
+                </div>
+
+                <h3>Recherche web intégrée</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🔍</span>Utilisation de /search</h4>
+                    
+                    <h5>Syntaxe de base</h5>
+                    <div class="code-block">/search [votre recherche]
+
+EXEMPLES VALIDES:
+/search prix matériaux construction 2025
+/search normes isolation mur sous-sol
+/search réglementation RBQ électricité
+/search subventions rénovation écoénergétique
+
+EXEMPLES INVALIDES:
+/search (sans terme de recherche)
+search prix matériaux (sans le /)
+</div>
+
+                    <h5>Exemple complet d'utilisation</h5>
+                    <div class="code-block">👤 /search prix béton prêt-à-verser Québec 2025
+
+🔎 RÉSULTATS RECHERCHE WEB
+═══════════════════════════════════════════════
+
+D'après les sources récentes (janvier 2025):
+
+💰 PRIX ACTUEL BÉTON PRÊT-À-VERSER
+• Prix de base: 180-220$ CAD/m³
+• Hausse de 8% depuis 2024
+• Variation selon résistance (20-35 MPa)
+
+📦 COÛTS ADDITIONNELS
+• Transport: 15-25$/km du bétonnier
+• Surcharge weekend: +15%
+• Livraison urgence: +25-50$
+
+🏢 FOURNISSEURS MAJEURS QUÉBEC
+• Béton Provincial: réseau étendu
+• Ciment Québec: spécialités régionales
+• King Packaged Materials: petits volumes
+
+📊 FACTEURS PRIX 2025
+• Coût énergie stabilisé
+• Pénurie chauffeurs transport
+• Demande forte construction résidentielle
+
+Sources: Association Béton Québec, Statistique Canada,
+RBQ Bulletin technique janvier 2025</div>
+
+                    <h5>Recherche spécialisée par domaine</h5>
+                    
+                    <p><strong>Recherche par site spécifique:</strong></p>
+                    <div class="code-block">/search rénovation écoénergétique site:rbq.gouv.qc.ca
+
+🔎 Recherche ciblée sur le site officiel RBQ...
+[Résultats officiels du gouvernement québécois]</div>
+
+                    <p><strong>Recherche par période:</strong></p>
+                    <div class="code-block">/search prix matériaux 2025 construction Québec
+
+🔎 Recherche avec filtre temporel récent...
+[Données les plus récentes disponibles]</div>
+                </div>
+
+                <h3>Analyse de documents</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">📄</span>Types de documents supportés</h4>
+                    
+                    <h5>1. Plans PDF</h5>
+                    <div class="code-block">📐 PLANS DE CONSTRUCTION
+• Plans architecturaux
+• Plans électriques/plomberie
+• Plans de site
+• Coupes et élévations
+• Détails de construction
+
+ANALYSE AUTOMATIQUE:
+• Dimensions et superficies
+• Spécifications matériaux
+• Systèmes mécaniques
+• Conformité codes
+• Estimations coûts</div>
+
+                    <h5>2. Devis et soumissions</h5>
+                    <div class="code-block">💰 DOCUMENTS FINANCIERS
+• Devis détaillés entrepreneurs
+• Soumissions sous-traitants
+• Factures et extras
+• Bordereaux de prix
+• Analyses comparatives
+
+ANALYSE AUTOMATIQUE:
+• Vérification prix marché
+• Comparaison alternatives
+• Items manquants
+• Recommandations optimisation</div>
+
+                    <h5>3. Photos de chantier/problèmes</h5>
+                    <div class="code-block">📸 IMAGES CONSTRUCTION
+• Photos problèmes structure
+• Défauts finition
+• Progression travaux
+• Matériaux défectueux
+• Situations dangereuses
+
+ANALYSE AUTOMATIQUE:
+• Identification problèmes
+• Solutions recommandées
+• Urgence intervention
+• Conformité sécurité</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🔍</span>Processus d'analyse</h4>
+                    
+                    <h5>Étape par étape:</h5>
+                    
+                    <p><strong>1. Sélection fichiers</strong></p>
+                    <div class="code-block">📄 ANALYSE FICHIERS
+━━━━━━━━━━━━━━━━━━━
+[Choisir fichiers...]
+
+👆 Cliquez et sélectionnez:
+• Un ou plusieurs fichiers
+• Formats: PDF, DOCX, JPG, PNG, CSV
+• Taille max: 5MB par fichier</div>
+
+                    <p><strong>2. Validation et analyse</strong></p>
+                    <div class="code-block">🔍 [Analyser Fichiers] ← Maintenant actif
+
+👆 Cliquez pour lancer l'analyse
+⏳ "Analyse des documents en cours..."</div>
+
+                    <p><strong>3. Résultats dans le chat</strong></p>
+                    <div class="code-block">👤 J'ai téléversé 2 fichiers (plan_maison.pdf, devis_entrepreneur.pdf)
+
+🔍 ANALYSE DOCUMENTAIRE COMPLÈTE
+═══════════════════════════════════════════════
+
+📋 RÉSUMÉ GÉNÉRAL
+Plan résidentiel unifamilial 1,650 pi² + devis estimation 385,000$
+
+📐 ANALYSE TECHNIQUE - PLAN MAISON
+• Type: Unifamilial 2 étages
+• Superficie: RDC 825 pi² + Étage 825 pi²  
+• Caractéristiques: 3 ch, 2.5 sdb, garage double
+• Conformité: Conforme CNB 2020
+• Recommandation: Plans professionnels bien détaillés
+
+💰 ANALYSE FINANCIÈRE - DEVIS
+• Prix total: 385,000$ (233$/pi²)
+• Évaluation: Prix compétitif pour marché 2025
+• Points d'attention: Contingences seulement 5% (recommandé 10-15%)
+• Manquant: Spécifications détaillées isolation
+
+🎯 RECOMMANDATIONS
+1. Augmenter contingences à 12% minimum
+2. Clarifier spécifications isolation R-value
+3. Ajouter clause variations prix matériaux
+4. Prévoir inspection additionnelle mi-parcours
+
+Questions? Je peux approfondir l'analyse de sections spécifiques.</div>
+
+                    <p><strong>4. Questions de suivi</strong></p>
+                    <div class="code-block">👤 "Peux-tu détailler l'analyse de l'isolation?"
+
+🏗️ ANALYSE DÉTAILLÉE - ISOLATION
+═══════════════════════════════════
+
+📋 CE QUI EST SPÉCIFIÉ
+• Murs: "Isolation standard"
+• Toiture: "Selon code"
+• Sous-sol: Non spécifié
+
+⚠️ PROBLÈMES IDENTIFIÉS
+• Aucune valeur R spécifiée
+• Type isolant non défini
+• Pare-vapeur non mentionné
+
+✅ RECOMMANDATIONS CONFORMITÉ
+• Murs: R-24.5 minimum (Québec zone 7)
+• Toiture: R-50 minimum
+• Sous-sol: R-17 murs fondation
+• Spécifier: Type isolant et installation
+
+💰 IMPACT BUDGÉTAIRE
+Isolation adéquate = +8,000-12,000$
+Économies chauffage = 800-1,200$/an
+Retour investissement: 8-12 ans</div>
+                </div>
+
+                <h3>Commandes spéciales</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">⚡</span>Commandes système</h4>
+                    
+                    <h5>1. Commandes de recherche</h5>
+                    <div class="code-block">/search [terme] - Recherche web générale
+/search [terme] site:rbq.gouv.qc.ca - Site spécifique
+/search normes [sujet] - Recherche réglementaire</div>
+
+                    <h5>2. Commandes projet</h5>
+                    <div class="code-block">/projet dashboard - Ouvre tableau de bord projets
+/projet nouveau - Créer nouveau projet
+/projet liste - Voir tous les projets
+/projet [nom] - Rechercher projet spécifique</div>
+
+                    <h5>3. Commandes expert (futures)</h5>
+                    <div class="code-block">/expert liste - Voir tous experts disponibles
+/expert [domaine] - Changer vers expert spécialisé
+/expert recommande - Suggestion expert pour question</div>
+
+                    <h5>4. Commandes utilitaires</h5>
+                    <div class="code-block">/aide - Afficher aide contextuelle
+/clear - Nouvelle consultation
+/historique - Voir conversations récentes
+/export - Options d'export rapide</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">💡</span>Exemples d'utilisation avancée</h4>
+                    
+                    <h5>Combinaisons recherche + expert:</h5>
+                    <div class="code-block">👤 /search prix fenêtres Energy Star 2025
+
+🔎 [Résultats recherche web affichés]
+
+👤 "Maintenant peux-tu m'expliquer les différences?"
+
+[Changement automatique vers Expert Portes & Fenêtres]
+
+🚪 "Basé sur les prix recherchés, voici l'analyse détaillée..."</div>
+
+                    <h5>Workflow projet complet:</h5>
+                    <div class="code-block">👤 /projet nouveau
+[Ouverture gestionnaire de projet]
+
+👤 [Création projet "Rénovation Cuisine"]
+
+👤 /expert architecte
+[Retour au chat avec Architecte]
+
+👤 "Voici les plans de ma cuisine à rénover"
+[Upload fichier PDF]
+
+🏠 [Analyse détaillée par l'architecte]
+
+👤 /projet dashboard
+[Retour au gestionnaire pour suivi]</div>
+                </div>
+            </section>
+
+            <section id="gestionnaire-projet">
+                <h2><span class="emoji">📋</span>5. GESTIONNAIRE DE PROJET</h2>
+                
+                <h3>Accès au gestionnaire</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🚪</span>Méthodes d'accès</h4>
+                    
+                    <h5>1. Depuis la sidebar</h5>
+                    <div class="code-block">🏗️ PROJETS
+━━━━━━━━━━━━━
+Total: 3 | Actifs: 2
+
+🟢 Maison Brossard
+🟡 Rénov. Cuisine  
+✅ Garage Laval
+
+[📊 Ouvrir Gestionnaire] ← Cliquez ici</div>
+
+                    <h5>2. Commande chat</h5>
+                    <div class="code-block">👤 /projet dashboard
+
+🏗️ "Ouverture du gestionnaire de projet..."
+[Redirection automatique vers le gestionnaire]</div>
+
+                    <h5>3. Accès direct projet</h5>
+                    <div class="code-block">Depuis sidebar, clic sur nom de projet:
+🟢 Maison Brossard ← Clic direct
+[Ouverture projet en mode détail]</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🖥️</span>Interface gestionnaire</h4>
+                    <p>Une fois ouvert, l'interface change complètement :</p>
+                    <div class="code-block">┌─ GESTIONNAIRE DE PROJET ─────────────────────────────┐
+│ [💬 Retour au Chat] ← En haut à droite               │
+├──────────────────────────────────────────────────────┤
+│                                                      │
+│ 🏠 📋 ✅ 🧮 📅 📊 📈 ➕                                │
+│ TAB TAB TAB TAB TAB TAB TAB TAB                        │
+│                                                      │
+│ [Contenu selon onglet sélectionné]                   │
+│                                                      │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+
+ONGLETS DISPONIBLES:
+🏠 Tableau de Bord    📋 Projets         ✅ Tâches
+🧮 Kanban            📅 Calendrier      📊 Gantt  
+📈 Rapports          ➕ Nouveau Projet</div>
+                </div>
+
+                <h3>Création de projet</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">➕</span>Formulaire nouveau projet</h4>
+                    
+                    <h5>Accès au formulaire:</h5>
+                    <ol>
+                        <li>Cliquez onglet "➕ Nouveau Projet"</li>
+                        <li>Ou utilisez <span class="inline-code">/projet nouveau</span></li>
+                        <li>Ou bouton "Premier Projet" si aucun projet</li>
+                    </ol>
+
+                    <h5>Formulaire détaillé:</h5>
+                    <div class="code-block">┌─ NOUVEAU PROJET ─────────────────────────────────────┐
+│                                                      │
+│ 📋 INFORMATIONS GÉNÉRALES        📍 LOCALISATION     │
+│ ┌─────────────────────────────┐  ┌───────────────────┐│
+│ │ Nom du projet *             │  │ Adresse           ││
+│ │ [Maison unifamiliale...]    │  │ [123 Rue...]      ││
+│ │                             │  │                   ││
+│ │ Nom du client               │  │ Ville             ││
+│ │ [Jean Dupont]               │  │ [Brossard]        ││
+│ │                             │  │                   ││
+│ │ Contact client              │  │ Code postal       ││
+│ │ [jean.dupont@email.com]     │  │ [J4B 1A1]         ││
+│ │                             │  │                   ││
+│ │ Type de projet              │  │ Budget initial    ││
+│ │ [Résidentiel ▼]             │  │ [350000] $        ││
+│ └─────────────────────────────┘  └───────────────────┘│
+│                                                      │
+│ 📅 DATES ET PRIORITÉ            🏗️ DESCRIPTION       │
+│ ┌─────────────────────────────┐  ┌───────────────────┐│
+│ │ Date début prévue           │  │ Description       ││
+│ │ [2025-03-01]                │  │ ┌─────────────────┤│
+│ │                             │  │ │Construction     ││
+│ │ Date fin prévue             │  │ │maison 1500pi²   ││
+│ │ [2025-12-15]                │  │ │avec garage      ││
+│ │                             │  │ │double...        ││
+│ │ Priorité                    │  │ │                 ││
+│ │ [Moyenne ▼]                 │  │ │                 ││
+│ │                             │  │ └─────────────────┤│
+│ │ Statut initial              │  │                   ││
+│ │ [En planification ▼]        │  │                   ││
+│ └─────────────────────────────┘  └───────────────────┘│
+│                                                      │
+│                  [🚀 Créer le Projet]                │
+│                                                      │
+└──────────────────────────────────────────────────────┘</div>
+
+                    <h5>Validation et création:</h5>
+                    <p><strong>Champs obligatoires:</strong></p>
                     <ul>
-                        <li><a href="#conversation">4.1 Mener des Conversations Efficaces avec l'IA</a></li>
-                        <li><a href="#profils">4.2 Sélectionner et Comprendre les Profils Experts</a></li>
-                        <li><a href="#analyse-docs">4.3 Analyse Approfondie de Documents</a></li>
-                        <li><a href="#recherche-web">4.4 Exploiter la Puissance de la Recherche Web Intégrée</a></li>
-                        <li><a href="#historique">4.5 Gérer et Consulter l'Historique des Conversations</a></li>
-                        <li><a href="#export">4.6 Exporter des Rapports de Conversation Professionnels</a></li>
+                        <li>Nom du projet (minimum)</li>
+                        <li>Type de projet sélectionné</li>
                     </ul>
-                </li>
-                <li><a href="#bonnes-pratiques">5. Bonnes Pratiques et Conseils d'Utilisation</a></li>
-                <li><a href="#depannage">6. Dépannage Courant et Foire Aux Questions (FAQ)</a></li>
-                <li><a href="#contact">7. Contact et Support Technique</a></li>
-            </ul>
+
+                    <p><strong>Champs optionnels mais recommandés:</strong></p>
+                    <ul>
+                        <li>Client et contact</li>
+                        <li>Localisation complète</li>
+                        <li>Budget et dates</li>
+                        <li>Description détaillée</li>
+                    </ul>
+
+                    <p><strong>Après création:</strong></p>
+                    <div class="code-block">✅ Projet 'Maison unifamiliale Brossard' créé avec succès! (ID: 15)
+
+[Redirection automatique vers vue détail du projet]</div>
+                </div>
+
+                <h3>Gestion des tâches</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">✅</span>Vue globale des tâches</h4>
+                    
+                    <h5>Accès:</h5>
+                    <div class="code-block">Onglet "✅ Tâches" dans gestionnaire
+Vue consolidée de toutes les tâches de tous projets</div>
+
+                    <h5>Interface tâches:</h5>
+                    <div class="code-block">┌─ VUE D'ENSEMBLE DES TÂCHES ─────────────────────────┐
+│                                                    │
+│ [Tous ▼] [Toutes ▼] [Tous ▼] [🔄 Actualiser]      │
+│ Statut   Priorité   Projet                         │
+│                                                    │
+│ 📊 MÉTRIQUES                                       │
+│ ┌──────────┬──────────┬──────────┐                 │
+│ │Affichées │Terminées │Progression│                 │
+│ │    15    │    8     │   53.3%   │                 │
+│ └──────────┴──────────┴──────────┘                 │
+│                                                    │
+│ 📋 LISTE DES TÂCHES                                │
+│ ┌─────────────────────────────────────────────────┐│
+│ │⏳ Excavation fondation                          ││
+│ │  Projet: Maison Brossard • Priorité: Élevée    ││
+│ │  Assigné: Excavation Pro • Échéance: 2025-03-15││
+│ │                                                 ││
+│ │🔄 Installation électrique                       ││
+│ │  Projet: Réno Cuisine • Priorité: Moyenne      ││
+│ │  Assigné: Électro Plus • Échéance: 2025-02-28  ││
+│ │                                                 ││
+│ │✅ Coulée fondation                              ││
+│ │  Projet: Garage Laval • Priorité: Élevée       ││
+│ │  Assigné: Béton Express • Terminé: 2025-01-20  ││
+│ └─────────────────────────────────────────────────┘│
+└────────────────────────────────────────────────────┘</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📝</span>Gestion tâches par projet</h4>
+                    
+                    <h5>Accès depuis projet spécifique:</h5>
+                    <ol>
+                        <li>Ouvrir projet en détail</li>
+                        <li>Onglet "✅ Tâches" du projet</li>
+                        <li>Vue focalisée sur un seul projet</li>
+                    </ol>
+
+                    <h5>Ajout nouvelle tâche:</h5>
+                    <div class="code-block">┌─ AJOUTER NOUVELLE TÂCHE ────────────────────────────┐
+│ [➕ Ajouter une nouvelle tâche ▼] ← Clic pour ouvrir│
+│                                                     │
+│ ✏️ DÉTAILS DE LA TÂCHE                              │
+│ ┌─────────────────────────────────────────────────┐ │
+│ │ Nom de la tâche *                               │ │
+│ │ [Installation toiture bardeaux]                 │ │
+│ │                                                 │ │
+│ │ Description                                     │ │
+│ │ ┌─────────────────────────────────────────────┐ │ │
+│ │ │Installation bardeaux architecturaux...     │ │ │
+│ │ └─────────────────────────────────────────────┘ │ │
+│ └─────────────────────────────────────────────────┘ │
+│                                                     │
+│ 📊 PROPRIÉTÉS           ⏱️ ESTIMATION               │
+│ ┌─────────────────────┐ ┌─────────────────────────┐ │
+│ │ Statut              │ │ Assigné à               │ │
+│ │ [À faire ▼]         │ │ [Toitures Pro Inc]      │ │
+│ │                     │ │                         │ │
+│ │ Priorité            │ │ Heures estimées         │ │
+│ │ [Élevée ▼]          │ │ [24] heures             │ │
+│ └─────────────────────┘ └─────────────────────────┘ │
+│                                                     │
+│ 💰 COÛTS                📅 ÉCHÉANCE                 │
+│ ┌─────────────────────┐ ┌─────────────────────────┐ │
+│ │ Coût estimé         │ │ Date fin prévue         │ │
+│ │ [4500] $            │ │ [2025-04-15]            │ │
+│ └─────────────────────┘ └─────────────────────────┘ │
+│                                                     │
+│                [➕ Créer la Tâche]                  │
+└─────────────────────────────────────────────────────┘</div>
+
+                    <h5>Après création:</h5>
+                    <div class="code-block">✅ Tâche 'Installation toiture bardeaux' créée avec succès!
+
+[Ajout automatique à la liste des tâches du projet]
+[Calcul automatique progression projet]</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🔄</span>Modification statut tâches</h4>
+                    
+                    <h5>Changement rapide:</h5>
+                    <div class="code-block">Depuis liste tâches:
+
+🔄 Installation électrique    [En cours ▼] [💾]
+   Projet: Réno Cuisine        ↓
+                              [À faire]
+                              [En cours]  ← Sélection
+                              [Terminé]
+
+[Clic sur 💾 pour sauvegarder]</div>
+
+                    <h5>Effet automatique:</h5>
+                    <div class="code-block">Changement statut → Recalcul progression projet automatique
+
+AVANT: Projet 60% complété (6/10 tâches)
+APRÈS: Projet 70% complété (7/10 tâches)
+
+[Mise à jour en temps réel dans tableau de bord]</div>
+                </div>
+
+                <h3>Vues avancées</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🧮</span>Vue Kanban</h4>
+                    
+                    <h5>Interface Kanban:</h5>
+                    <div class="code-block">┌─ TABLEAU KANBAN GLOBAL ─────────────────────────────┐
+│                                                     │
+│ [Tous les projets ▼] ← Filtre par projet            │
+│                                                     │
+│ ┌─────────────┬─────────────┬─────────────────────┐ │
+│ │  À FAIRE    │  EN COURS   │     TERMINÉ         │ │
+│ │    (5)      │    (3)      │       (8)           │ │
+│ ├─────────────┼─────────────┼─────────────────────┤ │
+│ │┌───────────┐│┌───────────┐│┌───────────────────┐│ │
+│ ││Excavation ││││Électricité│││Coulée fondation   ││ │
+│ ││Pro: Maison│││Pro: Cuisine│││Pro: Garage        ││ │
+│ ││🔴 Élevée  │││🟡 Moyenne ││││🔴 Élevée          ││ │
+│ │└───────────┘││└───────────┘││└───────────────────┘│ │
+│ │             ││             ││                    │ │
+│ │┌───────────┐││┌───────────┐││┌───────────────────┐│ │
+│ ││Plomberie  │││Peinture   │││Structure bois     ││ │
+│ ││Pro: Rénov │││Pro: Garage │││Pro: Maison        ││ │
+│ ││🟡 Moyenne ││││🟢 Faible  │││🔴 Élevée          ││ │
+│ │└───────────┘││└───────────┘││└───────────────────┘│ │
+│ │      ...    ││     ...     ││        ...          │ │
+│ └─────────────┴─────────────┴─────────────────────┘ │
+└─────────────────────────────────────────────────────┘</div>
+
+                    <h5>Interactions Kanban:</h5>
+                    <ul>
+                        <li><strong>Sélecteur statut</strong> sur chaque carte pour déplacement</li>
+                        <li><strong>Couleurs priorité</strong> : 🔴 Critique, 🟠 Élevée, 🟡 Moyenne, 🟢 Faible</li>
+                        <li><strong>Filtre par projet</strong> en haut</li>
+                        <li><strong>Scroll vertical</strong> si beaucoup de tâches</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📅</span>Vue Calendrier</h4>
+                    
+                    <h5>Navigation calendrier:</h5>
+                    <div class="code-block">┌─ CALENDRIER DES ÉCHÉANCES ─────────────────────────┐
+│                                                    │
+│ [⬅️ Mois Précédent] [Aujourd'hui] [Février 2025] [Mois Suivant ➡️] │
+│                                                    │
+│ ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┐       │
+│ │ LUN │ MAR │ MER │ JEU │ VEN │ SAM │ DIM │       │
+│ ├─────┼─────┼─────┼─────┼─────┼─────┼─────┤       │
+│ │     │     │     │     │     │  1  │  2  │       │
+│ │     │     │     │     │     │     │     │       │
+│ ├─────┼─────┼─────┼─────┼─────┼─────┼─────┤       │
+│ │  3  │  4  │  5  │  6  │  7  │  8  │  9  │       │
+│ │     │     │     │     │     │     │     │       │
+│ ├─────┼─────┼─────┼─────┼─────┼─────┼─────┤       │
+│ │ 10  │ 11  │ 12  │ 13  │ 14  │ 15  │ 16  │       │
+│ │     │     │🔴   │     │     │🟡🔴│     │       │
+│ │     │     │     │     │     │     │     │       │
+│ ├─────┼─────┼─────┼─────┼─────┼─────┼─────┤       │
+│ │ 17  │ 18  │ 19  │ 20  │ 21  │ 22  │ 23  │       │
+│ │     │🟡   │     │     │     │     │     │       │
+│ │     │     │     │     │     │     │     │       │
+│ └─────┴─────┴─────┴─────┴─────┴─────┴─────┘       │
+│                                                    │
+│ ⏰ ÉCHÉANCES POUR LE 15 FÉVRIER 2025               │
+│ ┌─────────────────────────────────────────────────┐│
+│ │🔴 Excavation fondation                          ││
+│ │  Projet: Maison Brossard • Priorité: Critique  ││
+│ │                                                 ││
+│ │🟡 Installation plomberie                        ││
+│ │  Projet: Réno Cuisine • Priorité: Moyenne      ││
+│ └─────────────────────────────────────────────────┘│
+└────────────────────────────────────────────────────┘</div>
+
+                    <h5>Interactions calendrier:</h5>
+                    <ul>
+                        <li><strong>Clic sur jour</strong> → Affiche détails échéances</li>
+                        <li><strong>Pastilles colorées</strong> → Priorité des tâches</li>
+                        <li><strong>Navigation mois</strong> avec boutons</li>
+                        <li><strong>Bouton "Aujourd'hui"</strong> pour retour rapide</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📊</span>Vue Gantt</h4>
+                    
+                    <h5>Diagramme Gantt interactif:</h5>
+                    <div class="code-block">┌─ DIAGRAMME DE GANTT GLOBAL ────────────────────────┐
+│                                                    │
+│ [Tous les projets ▼] [🔄 Actualiser]               │
+│                                                    │
+│ RESSOURCES/ASSIGNÉS    │ FÉV │ MAR │ AVR │ MAI │   │
+│                        │2025 │2025 │2025 │2025 │   │
+│ ┌─────────────────────┬─────────────────────────┐  │
+│ │ PROJETS             │     │     │     │     │  │
+│ │ ├ 📁 Maison Brossard│████████████████      │  │
+│ │ ├ 📁 Réno Cuisine   │  ██████               │  │
+│ │ └ 📁 Garage Laval   │████                   │  │
+│ │                     │     │     │     │     │  │
+│ │ TÂCHES              │     │     │     │     │  │
+│ │ ├ Excavation Pro    │██                     │  │
+│ │ ├ Électro Plus      │  ███                  │  │
+│ │ ├ Toitures Pro      │    ████               │  │
+│ │ ├ Plomberie Inc     │  ██                   │  │
+│ │ └ Finition Expert   │      ████████         │  │
+│ └─────────────────────┴─────────────────────────┘  │
+│                                                    │
+│ 📊 STATISTIQUES                                    │
+│ Total: 12 tâches | Terminées: 4 | En cours: 5     │
+│ À faire: 3                                         │
+└────────────────────────────────────────────────────┘</div>
+
+                    <h5>Légende Gantt:</h5>
+                    <div class="code-block">📋 LÉGENDE DES STATUTS
+┌────────────────────────────────────┐
+│ 🟢 █ À faire      │ 🔵 █ En cours   │
+│ ✅ █ Terminé      │ 🔴 █ En attente │
+└────────────────────────────────────┘</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📈</span>Vue Rapports</h4>
+                    
+                    <h5>Types de rapports disponibles:</h5>
+                    <div class="code-block">┌─ RAPPORTS ET ANALYSES ─────────────────────────────┐
+│                                                    │
+│ [Résumé Global ▼] ← Sélecteur type rapport         │
+│                                                    │
+│ 📋 RÉSUMÉ GLOBAL                                   │
+│ ┌─────────────────────────────────────────────────┐│
+│ │ 📊 MÉTRIQUES PRINCIPALES                        ││
+│ │ ┌──────────┬──────────┬──────────┬──────────┐   ││
+│ │ │ Projets  │ Projets  │ Projets  │ Budget   │   ││
+│ │ │ Totaux   │ Actifs   │ Terminés │ Total    │   ││
+│ │ │    8     │    5     │    3     │ 2.1M$    │   ││
+│ │ └──────────┴──────────┴──────────┴──────────┘   ││
+│ │                                                 ││
+│ │ 📈 RÉPARTITION PAR TYPE                         ││
+│ │ Résidentiel: 75% (6 projets)                   ││
+│ │ Commercial: 25% (2 projets)                    ││
+│ │                                                 ││
+│ │ 📅 ÉVOLUTION MENSUELLE                          ││
+│ │ [Graphique linéaire création projets]          ││
+│ └─────────────────────────────────────────────────┘│
+│                                                    │
+│ 🎯 PERFORMANCE DES PROJETS                         │
+│ ┌─────────────────────────────────────────────────┐│
+│ │ Projet              │ Progression │ Budget      ││
+│ │ ────────────────────┼─────────────┼─────────────││
+│ │ Maison Brossard     │    73%      │ +5% dépass.││
+│ │ Réno Cuisine        │    45%      │ Dans budget ││
+│ │ Garage Laval        │   100%      │ -3% économie││
+│ └─────────────────────────────────────────────────┘│
+└────────────────────────────────────────────────────┘</div>
+                </div>
+            </section>
+
+            <section id="export-historique">
+                <h2><span class="emoji">💾</span>6. EXPORT ET HISTORIQUE</h2>
+                
+                <h3>Sauvegarde conversations</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">💾</span>Sauvegarde automatique</h4>
+                    
+                    <h5>Quand la sauvegarde se fait:</h5>
+                    <div class="code-block">✅ SAUVEGARDE AUTOMATIQUE APRÈS:
+• Chaque message envoyé
+• Changement de profil expert  
+• Analyse de documents terminée
+• Recherche web effectuée
+• Retour au gestionnaire de projet
+
+❌ PAS DE SAUVEGARDE SI:
+• Conversation contient seulement message d'accueil
+• Aucun échange réel utilisateur/expert
+• Session vide ou erreur technique</div>
+
+                    <h5>Indication sauvegarde:</h5>
+                    <div class="code-block">Aucune indication visible pour l'utilisateur.
+Sauvegarde silencieuse en arrière-plan.
+
+En cas d'erreur:
+⚠️ "Erreur sauvegarde auto: [détail]"
+[Message affiché temporairement]</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🏷️</span>Noms de conversation automatiques</h4>
+                    
+                    <h5>Génération intelligente des noms:</h5>
+                    <div class="code-block">RÈGLES DE NOMMAGE:
+• Premier message utilisateur → 5 premiers mots + "..."
+• Si trop court → Date/heure "Consultation YYYY-MM-DD HH:MM"
+• Limite 80 caractères maximum
+
+EXEMPLES:
+👤 "Je veux construire une maison unifamiliale à Laval avec garage"
+📁 Nom: "Je veux construire une maison..."
+
+👤 "Bonjour"  
+📁 Nom: "Consultation 2025-01-15 14:30"</div>
+                </div>
+
+                <h3>Export HTML</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">📄</span>Export conversation complète</h4>
+                    
+                    <h5>Processus d'export:</h5>
+                    
+                    <p><strong>1. Préparation export</strong></p>
+                    <div class="code-block">📥 EXPORT
+━━━━━━━━━━━
+Nom client: [Jean Dupont]  ← Optionnel pour en-tête
+[📄 Rapport HTML]</div>
+
+                    <p><strong>2. Génération en cours</strong></p>
+                    <div class="code-block">[📄 Rapport HTML] ← Clic
+⏳ "Génération HTML..."
+
+Traitement:
+• Conversion messages en HTML
+• Application styles CSS intégrés
+• Génération en-tête professionnel
+• Formatage bulles conversation
+• Inclusion métadonnées</div>
+
+                    <p><strong>3. Prêt à télécharger</strong></p>
+                    <div class="code-block">✅ Rapport prêt.
+[⬇️ Télécharger HTML]
+
+Fichier: Rapport_Constructo_AI_Conv15.html
+Taille: ~150-500 KB selon longueur conversation</div>
+
+                    <h5>Contenu du rapport HTML:</h5>
+                    <div class="code-block">📄 RAPPORT CONSTRUCTO AI
+═══════════════════════════
+Expert: Entrepreneur Général
+Client: Jean Dupont
+Date: 15/01/2025 à 14:30
+ID Conversation: 15
+═══════════════════════════
+
+💬 HISTORIQUE CONVERSATION
+
+👤 Utilisateur:
+Je veux construire une maison unifamiliale...
+
+🏗️ Expert (Entrepreneur Général):
+Excellent projet ! Pour une construction...
+
+🔎 Résultat Recherche Web:
+D'après les sources récentes...
+
+[Conversation complète avec styles]
+
+═══════════════════════════
+🏗️ Constructo AI 2.0
+Assistant IA Spécialisé Construction Québec
+© 2025 - Sylvain Leduc</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📤</span>Export messages individuels</h4>
+                    
+                    <h5>Sélection message spécifique:</h5>
+                    <div class="code-block">📤 MESSAGES INDIVIDUELS
+━━━━━━━━━━━━━━━━━━━━━━
+[🏗️ Expert: Calcul poutre 20 pieds... ▼]
+
+👀 APERÇU ▼
+┌─────────────────────────────────────────┐
+│ 📐 CALCUL POUTRE - PORTÉE 20 PIEDS     │
+│                                         │
+│ 📋 DONNÉES DE CONCEPTION                │
+│ • Portée libre: 20' (6.1m)            │
+│ • Charge assumée: Résidentielle...     │
+│                                         │
+│ Total: 847 caractères                   │
+└─────────────────────────────────────────┘
+
+[📄 Exporter en HTML] [📋 Afficher pour Copie]</div>
+
+                    <h5>Export message unique:</h5>
+                    <p><strong>Après clic "Exporter en HTML":</strong></p>
+                    <div class="code-block">✅ Fichier prêt pour téléchargement
+[⬇️ Télécharger HTML]
+
+Fichier: Message_ConstructoAI_assistant_5_20250115_143052.html
+Contenu: Message formaté avec en-tête professionnel</div>
+
+                    <h5>Copie texte simple:</h5>
+                    <p><strong>Après clic "Afficher pour Copie":</strong></p>
+                    <div class="code-block">📋 CONTENU À COPIER:
+┌─────────────────────────────────────────┐
+│📐 CALCUL POUTRE - PORTÉE 20 PIEDS      │
+│                                         │
+│📋 DONNÉES DE CONCEPTION                 │
+│• Portée libre: 20' (6.1m)             │
+│• Charge assumée: Résidentielle standard│
+│• Charge vive: 40 PSF                   │
+│...                                      │
+│                                         │
+│[Sélectionner tout le texte et Ctrl+C]  │
+└─────────────────────────────────────────┘
+
+[❌ Fermer]</div>
+                </div>
+
+                <h3>Historique et reprise</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🕒</span>Navigation historique</h4>
+                    
+                    <h5>Liste conversations sauvegardées:</h5>
+                    <div class="code-block">🕒 HISTORIQUE
+━━━━━━━━━━━━━━━
+[Conteneur scroll 300px max]
+
+• Je veux construire une maison... (🗑️)
+  Hier 14:30
+
+• Rénovation cuisine budget 15000 (🗑️)  
+  Il y a 3 jours
+
+• Problème fissure fondation (🗑️)
+  La semaine dernière
+
+• Calcul poutre 18 pieds sans... (🗑️)
+  Il y a 2 semaines
+
+• Permis agrandissement garage (🗑️)
+  Le mois dernier
+
+[Plus d'historique si disponible...]</div>
+
+                    <h5>Interactions historique:</h5>
+                    
+                    <p><strong>Charger conversation:</strong></p>
+                    <div class="code-block">Clic sur nom conversation:
+• Je veux construire une maison... 
+
+→ Sauvegarde conversation actuelle (si applicable)
+→ Chargement conversation sélectionnée  
+→ Restauration contexte expert utilisé
+→ Affichage dans zone chat principale
+
+✅ "Consultation 15 chargée."</div>
+
+                    <p><strong>Supprimer conversation:</strong></p>
+                    <div class="code-block">Clic sur icône 🗑️:
+
+⚠️ Première tentative:
+"Cliquez à nouveau pour confirmer la suppression."
+
+🗑️ Deuxième clic:
+✅ "Consultation 'Rénovation cuisine...' supprimée."
+[Suppression définitive de la base de données]
+[Rafraîchissement liste historique]</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🔄</span>Reprise de conversation</h4>
+                    
+                    <h5>Restauration complète contexte:</h5>
+                    <p><strong>Ce qui est restauré:</strong></p>
+                    <div class="code-block">✅ CONTEXTE RESTAURÉ:
+• Tous les messages de la conversation
+• Expert utilisé lors de la dernière session
+• ID de conversation pour sauvegarde continue
+• Métadonnées (dates, client si spécifié)
+
+❌ NON RESTAURÉ:
+• Fichiers uploadés (références seulement)
+• État du gestionnaire de projet
+• Variables de session temporaires</div>
+
+                    <h5>Continuation naturelle:</h5>
+                    <p><strong>Après chargement:</strong></p>
+                    <div class="code-block">[Conversation précédente affichée dans chat]
+
+👤 NOUVEAUX MESSAGES:
+Vous pouvez continuer la conversation normalement.
+Tous nouveaux messages seront ajoutés à cette conversation.
+
+🏗️ EXPERT RESTAURÉ:
+L'expert utilisé précédemment est automatiquement sélectionné.
+Vous pouvez en changer si nécessaire via la dropdown.</div>
+
+                    <h5>Gestion erreurs chargement:</h5>
+                    <div class="code-block">❌ ERREURS POSSIBLES:
+
+1. "Erreur lors du chargement de la conversation X"
+   → Conversation corrompue ou supprimée
+   → Reste sur conversation actuelle
+
+2. "Aucune conversation trouvée avec l'ID X"
+   → ID invalide dans URL ou lien
+   → Retour à nouvelle conversation
+
+3. "Module historique indisponible"  
+   → Base de données inaccessible
+   → Fonctionnalité temporairement désactivée</div>
+                </div>
+            </section>
+
+            <section id="exemples-pratiques">
+                <h2><span class="emoji">🛠️</span>7. EXEMPLES PRATIQUES</h2>
+                
+                <h3>Scénarios d'utilisation</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🏠</span>Scénario 1: Construction maison neuve</h4>
+                    
+                    <h5>Parcours utilisateur complet:</h5>
+                    
+                    <p><strong>Phase 1: Planification initiale</strong></p>
+                    <div class="code-block">👤 "Je veux construire une maison unifamiliale 1800 pi² à Terrebonne, budget 450000$"
+
+🏗️ ENTREPRENEUR GÉNÉRAL:
+"Excellent projet ! Analysons la faisabilité :
+
+💰 ANALYSE BUDGÉTAIRE 450K$ / 1800 PI²
+• Prix cible: 250$/pi² (construction économique)
+• Votre budget: 250$/pi² ✅ RÉALISTE
+• Recommandation: Prévoir 10-15% contingences
+
+🏛️ SPÉCIFICITÉS TERREBONNE
+• Règlement urbanisme 2023-15
+• Permis construction requis
+• Raccordements Hydro-Québec disponibles
+• Sol généralement stable (vérifier géotechnique)
+
+📋 PROCHAINES ÉTAPES
+1. Acquisition terrain (si pas fait)
+2. Plans architecturaux préliminaires  
+3. Demande certificat d'implantation
+4. Soumissions entrepreneurs
+
+Avez-vous déjà un terrain ou cherchez-vous encore ?"</div>
+
+                    <p><strong>Phase 2: Questions spécialisées</strong></p>
+                    <div class="code-block">👤 "J'ai le terrain. Maintenant je veux optimiser l'efficacité énergétique"
+
+[Changement automatique vers Architecte OAQ]
+
+🏠 ARCHITECTE OAQ:
+"Perfect pour optimiser performance énergétique !
+
+🌱 STRATÉGIES EFFICACITÉ ÉNERGÉTIQUE
+• Orientation: Façade principale plein sud
+• Fenestration: 15% surface murs max
+• Isolation: R-24.5 murs, R-50 toiture  
+• Étanchéité: Test Blower Door <2.5 CAH
+• Système: Thermopompe air-air ou géothermie
+
+💰 INVESTISSEMENT vs ÉCONOMIES
+• Surcoût construction: 15,000-25,000$
+• Économie annuelle: 1,200-2,000$  
+• Retour investissement: 8-12 ans
+• Plus-value revente: +8-12%
+
+Voulez-vous que je détaille certains aspects ?"</div>
+
+                    <p><strong>Phase 3: Recherche spécialisée</strong></p>
+                    <div class="code-block">👤 "/search subventions efficacité énergétique Québec 2025"
+
+🔎 RÉSULTATS RECHERCHE WEB:
+"D'après Transition énergétique Québec (TEQ):
+
+💰 PROGRAMMES DISPONIBLES 2025
+• Chauffez vert: Jusqu'à 15,000$ thermopompe
+• Rénoclimat: Jusqu'à 20,000$ améliorations
+• Novoclimat: Remise taxes 5,000-8,000$
+• Municipal Terrebonne: Crédit taxes 2,000$
+
+📋 CONDITIONS NOVOCLIMAT
+• Plans certifiés architecte
+• Constructeur agréé Novoclimat
+• Tests obligatoires mi-construction
+• Certification finale requise
+
+🔗 LIENS UTILES
+• novoclimat.com/constructeurs-agrees
+• transitionenergetique.gouv.qc.ca"</div>
+
+                    <p><strong>Phase 4: Gestion de projet</strong></p>
+                    <div class="code-block">👤 "/projet nouveau"
+
+[Ouverture gestionnaire - Création projet]
+
+PROJET CRÉÉ: "Maison Unifamiliale Terrebonne"
+• Budget: 450,000$
+• Superficie: 1,800 pi²
+• Date début: 2025-04-01
+• Date fin: 2025-11-30
+• Statut: En planification
+
+[Ajout des tâches principales]
+✅ Plans architecturaux (En cours)
+⏳ Permis construction (À faire)  
+⏳ Excavation fondation (À faire)
+⏳ Charpente bois (À faire)
+[... autres tâches ...]</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🔧</span>Scénario 2: Rénovation urgente plomberie</h4>
+                    
+                    <h5>Diagnostic et solution express:</h5>
+                    <div class="code-block">👤 "URGENT: Fuite majeure dans mur salle de bain, eau partout!"
+
+🏗️ ENTREPRENEUR GÉNÉRAL:
+"Situation d'urgence ! Actions immédiates :
+
+🚨 ACTIONS URGENTES (MAINTENANT)
+1. FERMEZ valve d'eau principale
+2. Coupez électricité salle de bain
+3. Évacuez eau visible avec serpillères
+4. Prenez photos des dégâts (assurance)
+
+Je vous transfère vers notre plombier d'urgence..."
+
+[Changement automatique vers Plombier CMMTQ]
+
+🔧 PLOMBIER CMMTQ:
+"🚨 INTERVENTION URGENCE PLOMBERIE
+
+📞 APPELEZ IMMÉDIATEMENT:
+• Plombier urgence 24h: 514-URGENCE
+• Assurance habitation (réclamation)
+• Entrepreneur eau/dégâts
+
+🔍 DIAGNOSTIC PROBABLE
+Fuite dans mur = tuyau cuivre corrodé ou joint défaillant
+Zone typique: raccord douche/vannes
+
+💰 COÛTS APPROXIMATIFS
+• Diagnostic/localisation: 150-250$
+• Réparation simple: 300-800$  
+• Remplacement section: 800-1,500$
+• Réparation mur/finition: 1,000-3,000$
+
+⏱️ TEMPS INTERVENTION
+• Arrêt fuite: 1-3 heures
+• Réparation temporaire: Même jour
+• Réparation permanente: 1-2 jours
+• Finition mur: 3-7 jours
+
+Tenez-moi au courant de l'évolution !"</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📋</span>Scénario 3: Évaluation devis entrepreneur</h4>
+                    
+                    <h5>Analyse comparative experte:</h5>
+                    <div class="code-block">👤 "J'ai reçu 3 soumissions pour refaire ma toiture. Peux-tu analyser?"
+[Upload 3 fichiers PDF: devis_A.pdf, devis_B.pdf, devis_C.pdf]
+
+🏗️ ENTREPRENEUR GÉNÉRAL:
+🔍 ANALYSE COMPARATIVE - 3 SOUMISSIONS TOITURE
+
+📊 RÉSUMÉ COMPARATIF
+┌─────────────┬────────────┬────────────┬────────────┐
+│ CRITÈRE     │  DEVIS A   │  DEVIS B   │  DEVIS C   │
+├─────────────┼────────────┼────────────┼────────────┤
+│ Prix total  │  18,500$   │  22,300$   │  16,800$   │
+│ $/pi²       │   15.42$   │   18.58$   │   14.00$   │
+│ Garantie    │   10 ans   │   15 ans   │    5 ans   │
+│ Délai       │   3 jours  │   5 jours  │   2 jours  │
+│ Matériaux   │ Détaillés  │ Précis     │ Vagues     │
+└─────────────┴────────────┴────────────┴────────────┘
+
+⚖️ ANALYSE DÉTAILLÉE
+
+🏆 DEVIS A (Toitures Excellence)
+✅ Prix compétitif dans la moyenne
+✅ Matériaux bien spécifiés (GAF Timberline)
+✅ Inclut ventilation sofite/faîte
+⚠️ Garantie workmanship seulement 2 ans
+
+⭐ DEVIS B (Pro Couverture Inc)  
+✅ Garantie complète 15 ans
+✅ Matériaux premium (certifié Energy Star)
+✅ Inclus nettoyage/dispose
+❌ Prix 20% au-dessus marché
+
+🚩 DEVIS C (Toiture Express)
+❌ Prix suspect (trop bas)
+❌ Matériaux non spécifiés  
+❌ Aucune mention sous-toiture
+❌ Entreprise non vérifiée RBQ
+
+🎯 RECOMMANDATION
+CHOISIR DEVIS A avec modifications:
+• Demander extension garantie workmanship → 5 ans
+• Confirmer inclusion sous-toiture Ice & Water
+• Vérifier licence RBQ et assurances
+• Prix final négocié: 19,000$ raisonnable
+
+❓ Questions à poser avant signature ?"</div>
+                </div>
+
+                <h3>Cas d'usage métier</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">👷</span>Pour Entrepreneurs</h4>
+                    
+                    <h5>Estimation rapide chantier:</h5>
+                    <div class="code-block">👤 "Client demande prix pour agrandissement 20x24 pi avec salle de bain complète"
+
+🏗️ "ESTIMATION AGRANDISSEMENT 20×24' + SDB
+
+📐 DONNÉES DE BASE
+• Superficie: 480 pi²
+• Inclut: salle de bain 8×10'
+• Type: Extension plain-pied
+• Fondation: Requise
+
+💰 ESTIMATION DÉTAILLÉE (base 325$/pi²)
+┌─────────────────────┬─────────┬─────────┐
+│ POSTE               │  COÛT   │ $/PI²   │
+├─────────────────────┼─────────┼─────────┤
+│ Fondation 480 pi²   │ 21,600$ │   45$   │
+│ Structure/charpente │ 14,400$ │   30$   │
+│ Toiture            │  8,640$ │   18$   │
+│ Finition extérieure │  8,640$ │   18$   │
+│ Plomberie SDB      │ 12,000$ │   25$   │
+│ Électricité        │  8,640$ │   18$   │
+│ Isolation/gypse    │ 12,960$ │   27$   │
+│ Finition intérieure │ 16,800$ │   35$   │
+├─────────────────────┼─────────┼─────────┤
+│ SOUS-TOTAL         │103,680$ │  216$   │
+│ Administration 3%   │  3,110$ │    -    │
+│ Profit 12.6%       │ 13,464$ │    -    │
+│ Contingences 12%   │ 12,442$ │    -    │
+│ Taxes 14.975%     │ 19,911$ │    -    │
+├─────────────────────┼─────────┼─────────┤
+│ **TOTAL PROJET**   │**152,607$**│**318$**│
+└─────────────────────┴─────────┴─────────┘
+
+📋 INCLUSIONS
+• Raccordement services existants
+• Fenêtres standard 2×3 et 2×4
+• Finition peinture et plancher
+• Permis et inspections
+
+❌ EXCLUSIONS  
+• Excavation spéciale (roc)
+• Démolition existante
+• Aménagement paysager
+• Électroménagers salle de bain
+
+📅 DÉLAI: 6-8 semaines
+⚠️ Prix valide 30 jours, matériaux fluctuants"</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🏗️</span>Pour Architectes</h4>
+                    
+                    <h5>Optimisation design énergétique:</h5>
+                    <div class="code-block">👤 "Conception maison passive, climat Québec, budget 180$/pi² possible?"
+
+🏠 ARCHITECTE OAQ:
+"DÉFI INTÉRESSANT ! Maison passive à 180$/pi² serré mais possible.
+
+🎯 STRATÉGIES OPTIMISATION COÛT/PERFORMANCE
+
+📐 DESIGN ARCHITECTURAL
+• Forme simple (ratio volume/surface optimal)
+• Orientation plein sud ±15°
+• Plan ouvert maximisant gains solaires
+• Zones techniques regroupées
+• Toiture simple 2 versants
+
+🏗️ ENVELOPPE HAUTE PERFORMANCE
+• Murs: 2×6" + isolant extérieur (R-32 total)
+• Toiture: Fermes spéciales R-60
+• Fondation: Coffrage isolant R-22
+• Fenêtres: Triple vitrage U≤0.8
+• Étanchéité: <0.6 CAH @ 50Pa
+
+⚙️ SYSTÈMES SIMPLIFIÉS
+• VRC haut rendement (90%+)
+• Chauffage: Mini-split ou radiant électrique
+• ECS: Thermopompe eau chaude
+• Pas de climatisation (design passif)
+
+💰 ANALYSE BUDGÉTAIRE
+• Surcoût isolation: +25$/pi²
+• Surcoût fenestration: +15$/pi²
+• Systèmes efficaces: +20$/pi²
+• Économie simplification: -15$/pi²
+• **TOTAL: +45$/pi² = 225$/pi²**
+
+🔄 POUR ATTEINDRE 180$/pi²:
+• Volume compact <1,400 pi²
+• Finition standard (non haut-gamme)
+• Auto-construction partielle
+• Matériaux recyclés/récupérés
+
+📊 PERFORMANCE VISÉE
+• Besoin chauffage: <15 kWh/m²·an
+• Consommation total: <120 kWh/m²·an
+• Confort: ±2°C toute l'année
+• Coût énergétique: <600$/an
+
+Voulez-vous que je développe un concept spécifique ?"</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">⚡</span>Pour Électriciens</h4>
+                    
+                    <h5>Mise aux normes panneau électrique:</h5>
+                    <div class="code-block">👤 "Maison 1960, panneau 100A fusibles, combien pour mise aux normes complète?"
+
+⚡ ÉLECTRICIEN CMEQ:
+"MISE AUX NORMES - MAISON 1960
+
+🔍 ÉVALUATION EXISTANT
+• Panneau 100A fusibles = DÉSUET
+• Câblage probablement aluminum/knob&tube
+• Prises non-DDFT cuisine/SDB
+• Mise à terre inadéquate
+• Non-conforme Code électrique actuel
+
+⚙️ TRAVAUX REQUIS MISE AUX NORMES
+
+🔌 PANNEAU ÉLECTRIQUE
+• Nouveau panneau 200A avec disjoncteurs
+• Déplacement si requis (accès 1m)
+• Mise à terre conformité
+• Étiquetage circuits obligatoire
+• Coût: 2,500-3,500$
+
+🏠 CIRCUITS SPÉCIALISÉS OBLIGATOIRES
+• Cuisine: 2×20A dédiés (DDFT)
+• Salle de bain: 1×20A dédié (DDFT)
+• Laveuse: 1×20A dédié
+• Séchoir: 1×30A (240V)
+• Coût: 1,200-2,000$
+
+🔧 MISE À JOUR FILAGE
+• Remplacement aluminum → cuivre
+• DDFT toutes prises humides
+• Détecteurs fumée interconnectés
+• Éclairage code actuel
+• Coût: 8,000-15,000$ (selon accès)
+
+💰 ESTIMATION TOTALE
+┌─────────────────────┬─────────┬─────────┐
+│ COMPOSANT           │   MIN   │   MAX   │
+├─────────────────────┼─────────┼─────────┤
+│ Panneau 200A       │ 2,500$  │ 3,500$  │
+│ Circuits spéciaux   │ 1,200$  │ 2,000$  │
+│ Refonte filage      │ 8,000$  │15,000$  │
+│ Permis/inspection   │   400$  │   600$  │
+├─────────────────────┼─────────┼─────────┤
+│ **TOTAL**           │**12,100$**│**21,100$**│
+└─────────────────────┴─────────┴─────────┘
+
+📅 DÉLAI: 3-5 jours selon complexité
+⚠️ Inspection RBQ obligatoire
+🏛️ Permis municipal requis
+
+📋 FINANCEMENT POSSIBLE
+• Programme Chauffez Vert: jusqu'à 5,000$
+• Crédit impôt rénovation: 20% max 10,000$
+
+Voulez-vous une inspection gratuite pour évaluation précise ?"</div>
+                </div>
+
+                <h3>Trucs et astuces</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">💡</span>Optimisation utilisation</h4>
+                    
+                    <h5>1. Navigation rapide expert</h5>
+                    <div class="code-block">TRUC: Changement expert contextuel
+👤 "Peux-tu me transférer vers l'expert en plomberie?"
+→ Plus rapide que menu déroulant si en conversation
+
+TRUC: Expert suggéré automatiquement  
+👤 "Mon panneau électrique fait des étincelles"
+→ L'IA suggère changement vers Électricien</div>
+
+                    <h5>2. Recherche web efficace</h5>
+                    <div class="code-block">✅ BONNES PRATIQUES:
+/search normes RBQ plomberie 2025
+/search prix fenêtres Energy Star Québec
+/search subventions rénovation site:gouv.qc.ca
+
+❌ À ÉVITER:
+/search (sans terme)
+/search prix (trop vague)
+search normes (sans /)</div>
+
+                    <h5>3. Upload documents optimal</h5>
+                    <div class="code-block">✅ FORMATS RECOMMANDÉS:
+• Plans: PDF vectoriel (pas scan)
+• Photos: JPG/PNG <5MB
+• Devis: PDF texte (pas image)
+
+💡 TIPS UPLOAD:
+• Plusieurs fichiers simultanés = analyse comparative
+• Nommer fichiers clairement avant upload
+• Résolution photos: 1920×1080 suffisant</div>
+
+                    <h5>4. Gestionnaire de projet efficace</h5>
+                    <div class="code-block">💡 WORKFLOW OPTIMAL:
+
+1. Créer projet AVANT premières questions
+2. Utiliser /projet dashboard pour suivi
+3. Ajouter tâches au fur et à mesure
+4. Exporter rapports pour clients
+
+🎯 PROGRESSION TRACKING:
+• Mise à jour statuts régulière
+• Échéances réalistes
+• Notes importantes sauvegardées</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">⚡</span>Raccourcis clavier</h4>
+                    
+                    <h5>Navigation clavier:</h5>
+                    <div class="code-block">🖥️ RACCOURCIS UTILES:
+
+Dans chat:
+• Enter → Envoyer message
+• Shift+Enter → Nouvelle ligne
+• Ctrl+A → Sélectionner tout input
+
+Navigation:
+• Tab → Suivant focusable
+• Shift+Tab → Précédent focusable
+• Esc → Fermer modales/dropdowns
+
+Export:
+• Ctrl+S → Déclenche génération HTML (si conversation)
+• Ctrl+C → Copier depuis zone copy-paste</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🎯</span>Optimisation performance</h4>
+                    
+                    <h5>Pour sessions longues:</h5>
+                    <div class="code-block">💡 ÉVITER RALENTISSEMENTS:
+
+1. Nouvelle consultation tous les 50+ messages
+2. Éviter uploads multiples >20MB total
+3. Fermer onglets inutiles du navigateur
+4. Vider cache navigateur si lenteur
+
+⚡ PERFORMANCE OPTIMALE:
+• Chrome/Firefox dernière version
+• RAM: 4GB+ disponible
+• Connexion: 5 Mbps+ recommandée
+• Écran: 1366×768 minimum</div>
+
+                    <h5>Gestion stockage:</h5>
+                    <div class="code-block">📱 MOBILE/TABLETTE:
+
+• Interface adaptée automatiquement
+• Sidebar collapse automatique
+• Boutons tactiles optimisés (44px+)
+• Upload photos depuis caméra possible
+
+💾 STOCKAGE LOCAL:
+• Conversations: Serveur seulement
+• Pas de cache local
+• Déconnexion = pas de perte données</div>
+                </div>
+            </section>
+
+            <section id="depannage">
+                <h2><span class="emoji">⚙️</span>8. DÉPANNAGE</h2>
+                
+                <h3>Problèmes courants</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🔐</span>Problèmes connexion</h4>
+                    
+                    <h5>Mot de passe incorrect</h5>
+                    <div class="code-block">❌ PROBLÈME: "Mot de passe incorrect"
+
+✅ SOLUTIONS:
+1. Vérifier caps lock désactivé
+2. Copier-coller le mot de passe si fourni
+3. Effacer cache navigateur
+4. Essayer mode navigation privée
+5. Contacter administrateur si persistant
+
+⚠️ NOTE: Pas de récupération mot de passe
+Seulement l'administrateur peut vous aider.</div>
+
+                    <h5>Page ne charge pas</h5>
+                    <div class="code-block">❌ PROBLÈME: Page blanche ou erreur chargement
+
+✅ SOLUTIONS:
+1. Rafraîchir page (F5 ou Ctrl+R)
+2. Vérifier connexion internet
+3. Essayer autre navigateur
+4. Désactiver extensions navigateur
+5. Vider cache et cookies
+
+🌐 NAVIGATEURS SUPPORTÉS:
+• Chrome 90+
+• Firefox 88+
+• Safari 14+
+• Edge 90+</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">💬</span>Problèmes chat</h4>
+                    
+                    <h5>Messages ne s'envoient pas</h5>
+                    <div class="code-block">❌ PROBLÈME: Bouton envoi inactif ou erreur
+
+✅ SOLUTIONS:
+1. Vérifier texte non vide dans champ
+2. Attendre fin traitement message précédent
+3. Rafraîchir page si bloqué
+4. Vérifier connexion internet
+5. Essayer message plus court (<2000 caractères)
+
+⏱️ DÉLAIS NORMAUX:
+• Réponse expert: 10-30 secondes
+• Recherche web: 15-45 secondes  
+• Analyse documents: 30-90 secondes</div>
+
+                    <h5>Expert ne répond pas correctement</h5>
+                    <div class="code-block">❌ PROBLÈME: Réponses non pertinentes ou erreurs
+
+✅ SOLUTIONS:
+1. Vérifier bon expert sélectionné
+2. Reformuler question plus clairement
+3. Donner plus de contexte
+4. Essayer changement d'expert
+5. Nouvelle consultation si session longue
+
+💡 TIPS QUESTIONS EFFICACES:
+• Être spécifique: "fondation 24×32 pi" vs "fondation"
+• Donner contexte: "rénovation" vs "construction neuve"
+• Mentionner lieu: "Québec" vs région non spécifiée</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📄</span>Problèmes upload fichiers</h4>
+                    
+                    <h5>Fichier ne s'upload pas</h5>
+                    <div class="code-block">❌ PROBLÈME: Upload échoue ou erreur format
+
+✅ VÉRIFICATIONS:
+1. Taille fichier <5MB par fichier
+2. Format supporté (PDF, DOCX, JPG, PNG, CSV)
+3. Fichier non corrompu/protégé
+4. Connexion stable pendant upload
+5. Pas plus de 10 fichiers simultanés
+
+🔧 SOLUTIONS:
+• Réduire taille image (compression)
+• Convertir format si nécessaire
+• Upload un fichier à la fois si problème
+• Essayer depuis autre appareil</div>
+
+                    <h5>Analyse documents échoue</h5>
+                    <div class="code-block">❌ PROBLÈME: "Erreur analyse" ou résultat vide
+
+✅ CAUSES POSSIBLES:
+1. PDF scan illisible (pas vectoriel)
+2. Image floue ou trop sombre
+3. Format propriétaire non standard
+4. Fichier protégé par mot de passe
+5. Contenu trop technique pour OCR
+
+💡 OPTIMISATIONS:
+• Plans: PDF vectoriel de préférence
+• Photos: Éclairage adequat, netteté
+• Scans: 300 DPI minimum
+• Texte: Contraste élevé noir/blanc</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🏗️</span>Problèmes gestionnaire projet</h4>
+                    
+                    <h5>Projet ne se crée pas</h5>
+                    <div class="code-block">❌ PROBLÈME: Erreur création ou champs vides
+
+✅ SOLUTIONS:
+1. Nom projet obligatoire (vérifier rempli)
+2. Essayer nom plus court (<80 caractères)
+3. Éviter caractères spéciaux (!, @, #, etc.)
+4. Vérifier toutes listes déroulantes sélectionnées
+5. Rafraîchir page et réessayer
+
+⚠️ CHAMPS OBLIGATOIRES:
+• Nom du projet (minimum)
+• Type de projet (sélection)
+• Statut initial (pré-sélectionné)</div>
+
+                    <h5>Tâches ne s'affichent pas</h5>
+                    <div class="code-block">❌ PROBLÈME: Liste tâches vide ou erreur chargement
+
+✅ SOLUTIONS:
+1. Vérifier projet sélectionné existe
+2. Rafraîchir vue gestionnaire
+3. Retourner au chat puis revenir
+4. Vérifier filtres appliqués (statut, assigné)
+5. Créer nouvelle tâche test
+
+🔄 RAFRAÎCHISSEMENT:
+• Bouton "🔄 Actualiser" dans interface
+• Ou fermer/rouvrir gestionnaire
+• Nouvelle consultation si persistant</div>
+                </div>
+
+                <h3>Optimisation performance</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">⚡</span>Améliorer vitesse réponse</h4>
+                    
+                    <h5>Configuration navigateur optimale:</h5>
+                    <div class="code-block">✅ RÉGLAGES RECOMMANDÉS:
+
+CHROME:
+• Activer: Préchargement pages
+• Désactiver: Extensions inutiles
+• Vider: Cache tous les 7 jours
+• RAM: Minimum 4GB disponible
+
+FIREFOX:  
+• about:config → network.http.max-connections = 24
+• Désactiver: Bloqueurs publicité agressifs
+• Activer: Hardware acceleration
+
+SAFARI:
+• Développement → Désactiver restrictions JS
+• Préférences → Avancées → Smart Search
+
+🚫 À ÉVITER:
+• VPN lent (<10 Mbps)
+• Trop d'onglets ouverts (>20)
+• Extensions bloqueurs agressifs
+• Connexion instable/intermittente
+• Appareil avec <2GB RAM disponible</div>
+
+                    <h5>Optimisation réseau:</h5>
+                    <div class="code-block">📶 CONNEXION RECOMMANDÉE:
+• Minimum: 5 Mbps download
+• Optimal: 25+ Mbps download  
+• Latence: <100ms
+• Stabilité: Pas de coupures
+
+🔧 AMÉLIORER CONNEXION:
+• Wi-Fi: Proximité routeur (<10m)
+• Ethernet: Câblé si possible
+• 5GHz: Préférer à 2.4GHz
+• QoS: Prioriser navigateur web
+
+📱 MOBILE/DONNÉES:
+• 4G/LTE minimum
+• Éviter heures pointe réseau
+• Wi-Fi préférable si disponible
+• Mode avion ON/OFF si lenteur</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🗄️</span>Gestion mémoire et stockage</h4>
+                    
+                    <h5>Libérer ressources système:</h5>
+                    <div class="code-block">💾 OPTIMISATION MÉMOIRE:
+
+WINDOWS:
+• Ctrl+Shift+Esc → Gestionnaire tâches
+• Fermer applications inutiles
+• Redémarrer navigateur tous les 4h
+• Windows Update à jour
+
+MAC:
+• cmd+Option+Esc → Forcer à quitter
+• Moniteur d'activité → Processus
+• Redémarrer appareil quotidiennement
+• macOS dernière version
+
+🧹 NETTOYAGE RÉGULIER:
+• Cache navigateur: Hebdomadaire
+• Cookies tiers: Mensuel
+• Téléchargements: Vider dossier
+• Corbeille: Vider régulièrement</div>
+
+                    <h5>Stockage optimisé:</h5>
+                    <div class="code-block">💿 ESPACE DISQUE:
+• Minimum libre: 10% disque principal
+• Optimal: 20%+ espace libre
+• SSD préférable à HDD
+• Défragmentation si HDD (Windows)
+
+📂 ORGANISATION FICHIERS:
+• Dossier Téléchargements: Vider régulièrement
+• Rapports HTML: Organiser par projet
+• Screenshots: Supprimer anciens
+• Cache système: Nettoyage auto</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">⚙️</span>Paramètres avancés</h4>
+                    
+                    <h5>Configuration experte navigateur:</h5>
+                    <div class="code-block">🔧 CHROME AVANCÉ:
+chrome://settings/system
+• Utiliser accélération matérielle: ✅
+• Continuer exécution apps: ❌
+• Prédiction réseau: ✅
+
+chrome://flags/
+• #enable-quic: Enabled
+• #enable-javascript-harmony: Enabled
+• #enable-experimental-web-platform: Enabled
+
+🦊 FIREFOX AVANCÉ:
+about:config
+• network.http.max-connections: 48
+• network.http.max-persistent-connections-per-server: 8
+• javascript.options.mem.gc_allocation_threshold_mb: 30</div>
+                </div>
+
+                <h3>Support technique</h3>
+                
+                <div class="contact-info">
+                    <h3><span class="emoji">📞</span>Contact Support</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h4>Support Principal</h4>
+                            <p><strong>Sylvain Leduc - Créateur & Support</strong></p>
+                            <ul>
+                                <li><strong>Téléphone:</strong> (514) 820-1972</li>
+                                <li><strong>Email:</strong> constructoai@gmail.com</li>
+                                <li><strong>Délai réponse:</strong> 24-48h ouvrables</li>
+                                <li><strong>Langues:</strong> Français, Anglais</li>
+                                <li><strong>Support:</strong> Technique, utilisation, formation</li>
+                            </ul>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Support Email</h4>
+                            <ul>
+                                <li><strong>Adresse:</strong> constructoai@gmail.com</li>
+                                <li><strong>Inclure:</strong> Captures écran si problème visuel</li>
+                                <li><strong>Objet:</strong> [SUPPORT] Description problème</li>
+                                <li><strong>Délai:</strong> Réponse sous 24-48h</li>
+                            </ul>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Support Téléphonique</h4>
+                            <ul>
+                                <li><strong>Numéro:</strong> (514) 820-1972</li>
+                                <li><strong>Contact:</strong> Sylvain Leduc</li>
+                                <li><strong>Heures:</strong> Sur rendez-vous</li>
+                                <li><strong>Urgences:</strong> Laisser message vocal détaillé</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🎓</span>Support spécialisé</h4>
+                    
+                    <h5>Formation et consultation</h5>
+                    <ul>
+                        <li><strong>Formateur:</strong> Sylvain Leduc</li>
+                        <li><strong>Formation sur site:</strong> Disponible</li>
+                        <li><strong>Sessions virtuelles:</strong> Programmées</li>
+                        <li><strong>Consultation personnalisée:</strong> Sur mesure</li>
+                        <li><strong>Développement:</strong> Solutions personnalisées</li>
+                    </ul>
+
+                    <h5>Services entreprise</h5>
+                    <ul>
+                        <li><strong>Contact:</strong> constructoai@gmail.com</li>
+                        <li><strong>Téléphone:</strong> (514) 820-1972</li>
+                        <li><strong>Intégrations:</strong> Personnalisées</li>
+                        <li><strong>Support dédié:</strong> Disponible</li>
+                        <li><strong>Solutions:</strong> Sur mesure</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🛠️</span>Auto-diagnostic</h4>
+                    
+                    <h5>Tests système intégrés:</h5>
+                    <div class="code-block">🔍 DIAGNOSTIC AUTOMATIQUE
+Commande chat: /diagnostic
+
+VÉRIFICATIONS AUTOMATIQUES:
+• ✅ Connexion serveur
+• ✅ API Claude fonctionnelle  
+• ✅ Base données accessible
+• ✅ Profils experts chargés
+• ❌ Upload fichiers (erreur 502)
+
+RÉSULTATS:
+• Score santé: 85/100
+• Problèmes détectés: 1
+• Solutions automatiques: Appliquées
+• Redémarrage requis: Non
+
+[Rapport détaillé disponible]</div>
+
+                    <h5>Tests manuels utilisateur:</h5>
+                    <div class="code-block">🧪 TESTS RAPIDES UTILISATEUR
+
+TEST 1: Chat basique
+👤 "Bonjour test"
+✅ Réponse reçue en <30s
+
+TEST 2: Changement expert  
+→ Menu déroulant → Sélection différente
+✅ Profil changé + nouvelle consultation
+
+TEST 3: Upload simple
+→ Upload fichier texte <1MB
+✅ Analyse générée sans erreur
+
+TEST 4: Recherche web
+👤 "/search test connexion"
+✅ Résultats web retournés
+
+TEST 5: Gestionnaire projet
+→ Onglet gestionnaire
+✅ Interface charge correctement
+
+RÉSULTAT: ✅ Si tous tests passent = Système OK
+❌ Si échecs = Contacter support avec détails</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📝</span>Rapports d'erreur efficaces</h4>
+                    
+                    <h5>Informations essentielles à fournir:</h5>
+                    <div class="code-block">📋 TEMPLATE RAPPORT ERREUR
+
+INFORMATIONS SYSTÈME:
+• Navigateur: Chrome 120.0.6099.109
+• OS: Windows 11 / macOS Sonoma / Linux Ubuntu
+• Résolution: 1920×1080
+• Connexion: Wi-Fi 50 Mbps
+
+ERREUR RENCONTRÉE:
+• Quand: Date/heure exacte
+• Où: Page/section spécifique  
+• Quoi: Description précise problème
+• Fréquence: Toujours / Parfois / Une fois
+
+ÉTAPES REPRODUCTION:
+1. Action exacte effectuée
+2. Résultat attendu vs obtenu
+3. Captures écran si applicable
+4. Messages erreur exacts
+
+IMPACT:
+• Bloquant: Impossible continuer
+• Gênant: Ralentit utilisation
+• Mineur: Cosmétique seulement</div>
+
+                    <h5>Captures d'écran utiles:</h5>
+                    <div class="code-block">📸 SCREENSHOTS EFFICACES
+
+INCLURE TOUJOURS:
+• Barre d'adresse URL complète
+• Messages d'erreur complets
+• État interface (sidebar, menus)
+• Console développeur si erreur JS
+
+OUTILS RECOMMANDÉS:
+• Windows: Win+Shift+S
+• Mac: Cmd+Shift+4
+• Chrome: F12 → Console tab
+• Extensions: Lightshot, Nimbus
+
+💡 TIPS CAPTURES:
+• Plein écran plutôt que portion
+• Résolution native (pas zoom)
+• Format PNG préférable
+• Annoter zones problématiques</div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🔄</span>Procédures récupération</h4>
+                    
+                    <h5>Récupération session perdue:</h5>
+                    <div class="code-block">🆘 SESSION INTERROMPUE
+
+RÉCUPÉRATION AUTOMATIQUE:
+• Conversations: Auto-sauvegardées
+• Projets: Persistance base données
+• Préférences: Restaurées connexion
+
+RÉCUPÉRATION MANUELLE:
+1. Reconnexion → Historique sidebar
+2. Rechercher conversation récente
+3. Cliquer pour charger
+4. Continuer normalement
+
+❌ SI PERTE DONNÉES:
+• Contacter: constructoai@gmail.com
+• Téléphone: (514) 820-1972
+• Fournir: ID conversation si connu
+• Mention: Heure approximative perte
+• Backup: Exports HTML si existants</div>
+
+                    <h5>Réinitialisation complète:</h5>
+                    <div class="code-block">🔄 RESET COMPLET UTILISATEUR
+
+MÉTHODE DOUCE:
+1. Déconnexion propre
+2. Vider cache navigateur
+3. Redémarrer navigateur
+4. Reconnexion normale
+
+MÉTHODE COMPLÈTE:
+1. Exporter conversations importantes
+2. Déconnexion + effacer cookies
+3. Mode navigation privée
+4. Connexion test temporaire
+5. Si OK → Reconnexion normale
+6. Si problème → Support technique
+
+⚠️ ATTENTION:
+• Sauvegarder exports avant reset
+• Noter préférences experts
+• Lister projets importants
+• Backup conversations critiques</div>
+                </div>
+            </section>
+
+            <section id="annexes">
+                <h2><span class="emoji">📚</span>9. ANNEXES ET RÉFÉRENCE RAPIDE</h2>
+                
+                <h3>Référence rapide commandes</h3>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Commande</th>
+                                <th>Description</th>
+                                <th>Exemple</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="inline-code">/search [terme]</span></td>
+                                <td>Recherche web</td>
+                                <td>/search prix béton 2025</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">/projet dashboard</span></td>
+                                <td>Ouvrir gestionnaire</td>
+                                <td>/projet dashboard</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">/projet nouveau</span></td>
+                                <td>Créer projet</td>
+                                <td>/projet nouveau</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">/projet liste</span></td>
+                                <td>Voir projets</td>
+                                <td>/projet liste</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">/aide</span></td>
+                                <td>Aide contextuelle</td>
+                                <td>/aide</td>
+                            </tr>
+                            <tr>
+                                <td><span class="inline-code">/diagnostic</span></td>
+                                <td>Test système</td>
+                                <td>/diagnostic</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">⌨️</span>Raccourcis interface</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Raccourci</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="inline-code">Ctrl+R</span></td>
+                                    <td>Rafraîchir page</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="inline-code">F5</span></td>
+                                    <td>Recharger complet</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="inline-code">Esc</span></td>
+                                    <td>Fermer modales</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="inline-code">Tab</span></td>
+                                    <td>Navigation clavier</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="inline-code">Enter</span></td>
+                                    <td>Envoyer message</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="inline-code">Shift+Enter</span></td>
+                                    <td>Nouvelle ligne</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h3>Guide styles visuels</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🎨</span>Codes couleur interface</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Couleur</th>
+                                    <th>Signification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>🟢 Vert</td>
+                                    <td>Terminé, succès, validation</td>
+                                </tr>
+                                <tr>
+                                    <td>🔵 Bleu</td>
+                                    <td>En cours, information, neutre</td>
+                                </tr>
+                                <tr>
+                                    <td>🟡 Jaune</td>
+                                    <td>Attention, planification, attente</td>
+                                </tr>
+                                <tr>
+                                    <td>🔴 Rouge</td>
+                                    <td>Urgent, erreur, critique</td>
+                                </tr>
+                                <tr>
+                                    <td>⚫ Gris</td>
+                                    <td>Inactif, désactivé, archivé</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">🔤</span>Icônes principales</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Icône</th>
+                                    <th>Signification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>🏗️</td>
+                                    <td>Entrepreneur/Construction</td>
+                                </tr>
+                                <tr>
+                                    <td>👤</td>
+                                    <td>Utilisateur</td>
+                                </tr>
+                                <tr>
+                                    <td>⚡</td>
+                                    <td>Électricité</td>
+                                </tr>
+                                <tr>
+                                    <td>🔧</td>
+                                    <td>Plomberie</td>
+                                </tr>
+                                <tr>
+                                    <td>🏠</td>
+                                    <td>Architecture</td>
+                                </tr>
+                                <tr>
+                                    <td>🚪</td>
+                                    <td>Portes/Fenêtres</td>
+                                </tr>
+                                <tr>
+                                    <td>📋</td>
+                                    <td>Projets/Tâches</td>
+                                </tr>
+                                <tr>
+                                    <td>✅</td>
+                                    <td>Terminé/Validé</td>
+                                </tr>
+                                <tr>
+                                    <td>📅</td>
+                                    <td>Calendrier/Planning</td>
+                                </tr>
+                                <tr>
+                                    <td>📊</td>
+                                    <td>Rapports/Stats</td>
+                                </tr>
+                                <tr>
+                                    <td>🔍</td>
+                                    <td>Recherche/Analyse</td>
+                                </tr>
+                                <tr>
+                                    <td>📄</td>
+                                    <td>Documents/Export</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h3>Certifications et formations</h3>
+                
+                <div class="info-card">
+                    <h4><span class="emoji">🎓</span>Programmes formation disponibles</h4>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4><span class="emoji">🎓</span>Formation Utilisateur Base (4h)</h4>
+                            <ul>
+                                <li>Navigation interface complète</li>
+                                <li>Utilisation experts IA efficace</li>
+                                <li>Gestionnaire projet introduction</li>
+                                <li><strong>Formateur:</strong> Sylvain Leduc</li>
+                                <li><strong>Contact:</strong> constructoai@gmail.com</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <h4><span class="emoji">🎓</span>Formation Avancée (8h)</h4>
+                            <ul>
+                                <li>Optimisation workflow métier</li>
+                                <li>Analyses IA approfondies</li>
+                                <li>Gestion projet entreprise</li>
+                                <li><strong>Formateur:</strong> Sylvain Leduc</li>
+                                <li><strong>Certification:</strong> Expert Utilisateur</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <h4><span class="emoji">🎓</span>Formation Administrateur (16h)</h4>
+                            <ul>
+                                <li>Gestion équipes et permissions</li>
+                                <li>Configuration organisationnelle</li>
+                                <li>Intégrations systèmes externes</li>
+                                <li><strong>Formateur:</strong> Sylvain Leduc</li>
+                                <li><strong>Certification:</strong> Administrateur Certifié</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <h4><span class="emoji">💼</span>Formation Entreprise Sur-Mesure</h4>
+                            <ul>
+                                <li>Adaptation besoins spécifiques</li>
+                                <li>Formation sur site disponible</li>
+                                <li>Support post-formation inclus</li>
+                                <li><strong>Contact:</strong> (514) 820-1972</li>
+                                <li><strong>Certification:</strong> Spécialiste Métier</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-card">
+                    <h3><span class="emoji">🎉</span>Conclusion</h3>
+                    
+                    <h4><span class="emoji">🚀</span>Félicitations !</h4>
+                    <p>Vous maîtrisez maintenant <strong>Constructo AI 3.0</strong>, la plateforme d'intelligence artificielle la plus avancée du secteur construction québécois !</p>
+
+                    <h4><span class="emoji">🎯</span>Ce que vous savez faire:</h4>
+                    <ul>
+                        <li>✅ <strong>Naviguer efficacement</strong> dans l'interface complète</li>
+                        <li>✅ <strong>Utiliser les 60+ experts IA</strong> pour tous vos besoins</li>
+                        <li>✅ <strong>Analyser documents</strong> professionnellement</li>
+                        <li>✅ <strong>Gérer projets</strong> de A à Z avec outils intégrés</li>
+                        <li>✅ <strong>Exporter rapports</strong> de qualité client</li>
+                        <li>✅ <strong>Résoudre problèmes</strong> techniques autonomement</li>
+                    </ul>
+
+                    <h4><span class="emoji">🌟</span>Prochaines étapes:</h4>
+                    <ol>
+                        <li><strong>Pratiquez régulièrement</strong> avec projets réels</li>
+                        <li><strong>Explorez experts spécialisés</strong> selon vos besoins</li>
+                        <li><strong>Optimisez workflows</strong> métier avec gestionnaire projet</li>
+                        <li><strong>Partagez connaissances</strong> avec collègues et équipes</li>
+                        <li><strong>Restez à jour</strong> avec nouvelles fonctionnalités</li>
+                    </ol>
+
+                    <h4><span class="emoji">💡</span>Ressources continues:</h4>
+                    <ul>
+                        <li><strong>Support technique :</strong> Toujours disponible</li>
+                        <li><strong>Formation avancée :</strong> Évolution permanente</li>
+                        <li><strong>Communauté :</strong> Partage bonnes pratiques</li>
+                        <li><strong>Mises à jour :</strong> Améliorations constantes</li>
+                    </ul>
+
+                    <h4><span class="emoji">🏗️</span>Constructo AI 3.0 = Votre Avantage Concurrentiel</h4>
+                    <p>Vous disposez maintenant d'un <strong>avantage technologique majeur</strong> dans l'industrie construction québécoise. Utilisez cette puissance pour :</p>
+                    <ul>
+                        <li><strong>Gagner du temps</strong> sur estimations et analyses</li>
+                        <li><strong>Améliorer qualité</strong> de vos recommandations</li>
+                        <li><strong>Impressionner clients</strong> avec expertise IA</li>
+                        <li><strong>Développer affaires</strong> grâce à efficacité accrue</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="emoji">📖</span>Informations Manuel</h4>
+                    <ul>
+                        <li><strong>Version:</strong> 1.0 - Janvier 2025</li>
+                        <li><strong>Auteur:</strong> Sylvain Leduc - Constructo AI</li>
+                        <li><strong>Contact:</strong> constructoai@gmail.com | (514) 820-1972</li>
+                        <li><strong>Mise à jour:</strong> Documentation vivante, évolutions continues</li>
+                        <li><strong>Feedback:</strong> Vos suggestions amélioreront ce manuel !</li>
+                    </ul>
+                </div>
+            </section>
         </div>
 
-        <section id="introduction">
-            <h2>1. Introduction</h2>
-            <p>Bienvenue dans le manuel d'utilisation exhaustif de l'Assistant Expert AI, une solution innovante développée pour Desmarais & Gagné. Cet outil a été conçu pour révolutionner votre approche de la fabrication métallique en vous offrant un accès direct à une expertise spécialisée et des capacités d'analyse avancées.</p>
-            
-            <h3 id="objectif">1.1 Objectif du Manuel</h3>
-            <p>Ce manuel a pour vocation de vous fournir une compréhension approfondie de toutes les fonctionnalités de l'Assistant Expert AI. Que vous soyez un nouvel utilisateur ou que vous cherchiez à optimiser votre utilisation, ce guide vous accompagnera pas à pas. Notre objectif est de vous rendre autonome et efficace dans l'exploitation de cet outil puissant.</p>
-
-            <h3 id="public-cible">1.2 Public Cible</h3>
-            <p>Ce manuel s'adresse à tous les employés de Desmarais & Gagné autorisés à utiliser l'Assistant Expert AI, incluant (mais sans s'y limiter) les estimateurs, les gestionnaires de projet, les ingénieurs, les techniciens et le personnel administratif impliqué dans les processus de fabrication et de gestion.</p>
-            <p>Aucune connaissance préalable en intelligence artificielle n'est requise. Une familiarité avec les opérations de Desmarais & Gagné sera cependant un atout.</p>
-        </section>
-
-        <section id="demarrage">
-            <h2>2. Démarrage Rapide</h2>
-            <h3 id="acces">2.1 Accès à l'application</h3>
-            <p>L'Assistant Expert AI est une application web. Pour y accéder :</p>
-            <ol>
-                <li>Ouvrez votre navigateur web préféré (Chrome, Firefox, Edge sont recommandés).</li>
-                <li>Saisissez l'URL de l'application qui vous a été communiquée par votre service informatique ou votre responsable.</li>
-                <li>Assurez-vous de disposer d'une connexion Internet active et stable pour une expérience optimale.</li>
-            </ol>
-            <p>La première page que vous verrez est la page d'accueil de Desmarais & Gagné, présentant l'entreprise et ses services. Le formulaire de connexion se trouve généralement en bas de cette page.</p>
-
-            <h3 id="connexion">2.2 Connexion et Sécurité</h3>
-            <p>L'accès à l'Assistant Expert AI est sécurisé par un mot de passe unique pour protéger les informations et les fonctionnalités.</p>
-            <h4>Procédure de Connexion :</h4>
-            <ol>
-                <li>Sur la page d'accueil, faites défiler vers le bas jusqu'à la section "Connexion".</li>
-                <li>Dans le champ intitulé "Mot de passe", saisissez avec attention le mot de passe qui vous a été fourni.</li>
-                <li>Cliquez sur le bouton "Se connecter".</li>
-            </ol>
-            <h4>En cas de succès :</h4>
-            <p>Vous serez redirigé vers l'interface principale de l'Assistant IA, prêt à commencer votre travail.</p>
-            <h4>En cas d'échec :</h4>
-            <p>Un message d'erreur "Mot de passe incorrect" s'affichera sous le champ de saisie. Vérifiez les points suivants :</p>
-            <ul>
-                <li><strong>Sensibilité à la casse :</strong> Le mot de passe distingue les majuscules des minuscules (par exemple, "MotDePasse1" est différent de "motdepasse1").</li>
-                <li><strong>Erreurs de frappe :</strong> Assurez-vous qu'il n'y a pas de fautes de frappe ou d'espaces superflus.</li>
-                <li><strong>Touche Verr. Maj. (Caps Lock) :</strong> Vérifiez que la touche Verr. Maj. n'est pas activée accidentellement.</li>
-            </ul>
-            <div class="warning">
-                <strong>Sécurité du mot de passe :</strong> Ne partagez jamais votre mot de passe. Si vous suspectez que votre mot de passe a été compromis, informez-en immédiatement votre responsable.
-            </div>
-        </section>
-
-        <section id="interface">
-            <h2>3. Exploration de l'Interface Utilisateur</h2>
-            <p>L'interface de l'Assistant Expert AI est conçue pour être intuitive et efficace. Elle se divise en trois composantes majeures :</p>
-
-            <h3 id="sidebar">3.1 Panneau Latéral (Sidebar) : Votre Centre de Contrôle</h3>
-            <p>Le panneau latéral, positionné à gauche, est votre tableau de bord principal pour accéder aux différentes fonctionnalités et configurations de l'application.</p>
-            <ul>
-                <li>
-                    <h4>Logo et Nom de l'Entreprise</h4>
-                    <p>Affiche fièrement le logo de Desmarais & Gagné, rappelant l'identité de l'outil.</p>
-                </li>
-                <li>
-                    <h4>✨ Nouvelle Consultation</h4>
-                    <p>Ce bouton permet de réinitialiser la session de chat. Cliquer dessus aura les effets suivants :</p>
-                    <ul>
-                        <li>La conversation actuelle (si elle contient plus que le message d'accueil) sera automatiquement sauvegardée dans l'historique.</li>
-                        <li>La zone de chat sera vidée, prête pour une nouvelle interaction.</li>
-                        <li>L'IA affichera son message d'accueil initial en fonction du profil expert actuellement sélectionné.</li>
-                    </ul>
-                    <p>Utilisez cette fonction lorsque vous souhaitez aborder un sujet complètement différent ou commencer une nouvelle analyse sans lien avec la précédente.</p>
-                </li>
-                <li>
-                    <h4>👤 Profil Expert</h4>
-                    <p>Permet de moduler l'expertise de l'IA. Un menu déroulant liste les profils disponibles (ex: "ESTIMATEUR", "Expert Soudure", "Généraliste").</p>
-                    <ul>
-                        <li>La sélection d'un nouveau profil entraîne automatiquement le démarrage d'une "Nouvelle Consultation" (la conversation précédente est sauvegardée).</li>
-                        <li>L'IA adoptera alors les connaissances, le ton et les directives spécifiques au profil choisi.</li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>📄 Analyse Fichiers</h4>
-                    <p>Cette section vous permet de soumettre des documents à l'IA pour analyse.</p>
-                    <ul>
-                        <li><strong>Téléversement :</strong> Cliquez sur "Browse files" pour ouvrir une boîte de dialogue de sélection de fichiers, ou glissez-déposez directement vos fichiers dans la zone dédiée. Vous pouvez sélectionner plusieurs fichiers à la fois.</li>
-                        <li><strong>Formats supportés :</strong> PDF, DOCX (documents Word), CSV (fichiers texte délimités par des virgules), TXT (fichiers texte brut), et images (JPG, JPEG, PNG, WEBP).</li>
-                        <li><strong>Lancement de l'analyse :</strong> Une fois vos fichiers téléversés (ils apparaîtront listés), cliquez sur le bouton "🔍 Analyser Fichiers". Un message confirmant le téléversement sera ajouté à votre conversation, puis l'IA commencera l'analyse. Les résultats s'afficheront dans la zone de chat principale.</li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>🔎 Recherche Web</h4>
-                    <p>Contient un expander (section dépliable) intitulé "Comment utiliser la recherche web". En cliquant dessus, vous découvrirez des instructions et exemples pour utiliser la fonctionnalité de recherche web de l'IA via la commande <code>/search</code>.</p>
-                </li>
-                <li>
-                    <h4>🕒 Historique</h4>
-                    <p>Conserve une trace de vos précédentes consultations. Les conversations sont listées par nom (généralement les premiers mots de votre première question) et date de dernière mise à jour.</p>
-                    <ul>
-                        <li><strong>Charger :</strong> Cliquez sur le nom d'une conversation pour la recharger intégralement dans la zone de chat. La conversation que vous aviez en cours avant le chargement sera sauvegardée.</li>
-                        <li><strong>Supprimer :</strong> Cliquez sur l'icône poubelle (🗑️) à droite du nom d'une conversation pour la supprimer définitivement de l'historique. Soyez prudent, cette action est irréversible.</li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>📥 Export</h4>
-                    <p>Vous permet de générer un rapport HTML de votre conversation actuelle.</p>
-                    <ul>
-                        <li><strong>Nom client (optionnel) :</strong> Entrez un nom de client ou une référence de projet ici si vous souhaitez qu'il figure sur le rapport exporté.</li>
-                        <li><strong>Générer le rapport :</strong> Cliquez sur "📄 Rapport HTML". L'application va préparer le fichier.</li>
-                        <li><strong>Télécharger :</strong> Un bouton "⬇️ Télécharger HTML" apparaîtra alors. Cliquez dessus pour enregistrer le fichier <code>.html</code> sur votre ordinateur.</li>
-                    </ul>
-                </li>
-                <li>
-                    <h4>🔗 Manuel d'instruction</h4>
-                    <p>Fournit un lien direct vers ce document, vous permettant de consulter l'aide à tout moment.</p>
-                </li>
-                <li>
-                    <h4>🚪 Déconnexion</h4>
-                    <p>Cliquez sur ce bouton pour mettre fin à votre session et retourner à la page d'accueil/connexion. Toutes les données de session non sauvegardées (comme les fichiers en cours de téléversement non encore analysés) pourraient être perdues, bien que les conversations soient généralement sauvegardées avant la déconnexion effective.</p>
-                </li>
-            </ul>
-
-            <h3 id="chat-area">3.2 Zone de Chat Principale : Le Cœur de l'Interaction</h3>
-            <p>Cet espace central de l'écran est dédié à l'affichage de votre dialogue avec l'Assistant Expert AI.</p>
-            <ul>
-                <li><strong>Messages Utilisateur :</strong> Vos questions et instructions apparaissent généralement alignées à droite, souvent avec un fond de couleur distinct (par exemple, un vert pâle associé à Desmarais & Gagné).</li>
-                <li><strong>Réponses de l'Assistant :</strong> Les réponses de l'IA, les résultats d'analyse de documents, et les synthèses de recherche web sont affichés alignés à gauche, souvent avec un fond blanc ou gris clair.</li>
-                <li><strong>Formatage Riche :</strong> L'IA peut utiliser des mises en forme telles que des listes, des tableaux, du texte en gras, et des blocs de code pour présenter l'information de manière claire et structurée.</li>
-                <li><strong>Défilement :</strong> Si la conversation devient longue, une barre de défilement apparaîtra pour vous permettre de naviguer à travers l'historique des messages de la session en cours.</li>
-            </ul>
-
-            <h3 id="chat-input">3.3 Champ de Saisie : Communiquer avec l'IA</h3>
-            <p>Localisé en bas de la zone de chat principale, ce champ de texte est votre principal moyen d'interaction avec l'IA.</p>
-            <ul>
-                <li><strong>Saisie de Texte :</strong> Cliquez dans le champ (qui affiche souvent "Posez votre question ou tapez /search [recherche web]...") et commencez à taper votre message.</li>
-                <li><strong>Envoi du Message :</strong>
-                    <ul>
-                        <li>Appuyez sur la touche <code>Entrée</code> de votre clavier.</li>
-                        <li>Ou cliquez sur l'icône d'envoi (généralement une flèche ou un avion en papier) à droite du champ de saisie.</li>
-                    </ul>
-                </li>
-                <li><strong>Commandes Spéciales :</strong> En plus des questions en langage naturel, vous pouvez utiliser des commandes comme <code>/search [votre requête]</code> pour activer des fonctionnalités spécifiques.</li>
-            </ul>
-            <div class="tip">
-                <strong>Astuce :</strong> Pour des questions longues ou des instructions détaillées, vous pouvez rédiger votre texte dans un éditeur externe puis le copier-coller dans le champ de saisie.
-            </div>
-        </section>
-
-        <section id="fonctionnalites">
-            <h2>4. Maîtrise des Fonctionnalités Clés</h2>
-
-            <div class="feature-card">
-                <h3 id="conversation">4.1 Mener des Conversations Efficaces avec l'IA</h3>
-                <p>L'essence de l'Assistant Expert AI réside dans sa capacité à dialoguer. Pour optimiser vos interactions :</p>
-                <h4>Soyez Clair et Précis</h4>
-                <p>Formulez vos questions de manière explicite. Plus votre demande est claire, plus la réponse de l'IA sera pertinente.</p>
-                <ul>
-                    <li>👎 Moins efficace : "Parle-moi de l'acier."</li>
-                    <li>👍 Plus efficace : "Quelles sont les principales différences de soudabilité entre l'acier inoxydable 304 et 316L pour des applications structurelles extérieures ?"</li>
-                </ul>
-                <h4>Fournissez du Contexte</h4>
-                <p>Si votre question fait suite à une discussion précédente ou concerne un projet spécifique, rappelez brièvement le contexte si nécessaire, surtout si vous avez démarré une nouvelle consultation ou changé de profil entre-temps.</p>
-                <h4>Utilisez des Questions de Suivi</h4>
-                <p>N'hésitez pas à approfondir un sujet. Si une réponse n'est pas assez détaillée, demandez des clarifications ou des exemples. "Peux-tu m'en dire plus sur le point 3 ?" ou "Donne-moi un exemple concret d'application de cette norme."</p>
-                <h4>Segmentation des Requêtes Complexes</h4>
-                <p>Pour des problèmes complexes, décomposez-les en plusieurs questions plus petites. Cela aide l'IA à traiter chaque aspect plus efficacement.</p>
-            </div>
-
-            <div class="feature-card">
-                <h3 id="profils">4.2 Sélectionner et Comprendre les Profils Experts</h3>
-                <p>Les profils experts permettent d'adapter l'IA à des tâches spécifiques. Chaque profil est doté d'une "personnalité" et d'une base de connaissances spécialisée.</p>
-                <h4>Comment Choisir un Profil ?</h4>
-                <ul>
-                    <li><strong>ESTIMATEUR :</strong> Idéal pour les questions relatives aux coûts, aux temps de fabrication, à l'analyse de devis, et à la gestion des matériaux selon les standards de Desmarais & Gagné (si la base de connaissance `ESTIMATEUR.txt` est chargée et complète).</li>
-                    <li><strong>Expert Soudure (Exemple) :</strong> Pour des questions techniques sur les procédés de soudage, les normes, les matériaux spécifiques, etc.</li>
-                    <li><strong>Généraliste (ou Profil par Défaut) :</strong> Pour des questions plus générales ou si aucun profil spécifique ne correspond à votre besoin immédiat.</li>
-                </ul>
-                <h4>Impact du Changement de Profil</h4>
-                <p>Lorsque vous changez de profil via le menu déroulant dans le panneau latéral :</p>
-                <ol>
-                    <li>Votre conversation actuelle est sauvegardée dans l'historique.</li>
-                    <li>Une nouvelle consultation démarre.</li>
-                    <li>L'IA vous accueillera avec un message adapté à son nouveau rôle. Ses réponses ultérieures seront basées sur les directives et connaissances de ce nouveau profil.</li>
-                </ol>
-                <div class="note">
-                    <strong>Comprendre les Limites du Profil :</strong> Chaque profil est "programmé" pour opérer dans un certain cadre. Si vous posez une question très éloignée de l'expertise du profil actuel (par exemple, demander des conseils en marketing au profil "ESTIMATEUR"), la réponse pourrait être moins pertinente ou l'IA pourrait indiquer qu'elle sort de son domaine de compétence.
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <h3 id="analyse-docs">4.3 Analyse Approfondie de Documents</h3>
-                <p>L'analyse de documents est une fonctionnalité puissante pour extraire des informations, résumer des contenus et obtenir des perspectives techniques.</p>
-                <h4>Types de Fichiers et Cas d'Usage Typiques :</h4>
-                <ul>
-                    <li><strong>PDF :</strong> Analyse de plans techniques, fiches de spécifications, rapports, normes. L'IA tentera d'extraire le texte. Si le PDF est une image numérisée sans OCR, l'extraction de texte peut être limitée.</li>
-                    <li><strong>DOCX :</strong> Devis, cahiers des charges, correspondances techniques.</li>
-                    <li><strong>CSV :</strong> Listes de matériaux, données tabulaires, nomenclatures. L'IA peut aider à interpréter la structure.</li>
-                    <li><strong>TXT :</strong> Notes brutes, descriptions de projets, extraits de code.</li>
-                    <li><strong>Images (JPG, PNG, WEBP) :</strong> Croquis techniques, photos de pièces, schémas. L'IA tentera de décrire l'image et d'identifier les éléments pertinents (selon ses capacités de vision).</li>
-                </ul>
-                <h4>Procédure Détaillée d'Analyse :</h4>
-                <ol>
-                    <li>Accédez à la section "Analyse Fichiers" dans le panneau latéral.</li>
-                    <li>Utilisez le bouton "Browse files" ou la fonction glisser-déposer pour ajouter un ou plusieurs fichiers. La liste des fichiers sélectionnés s'affiche.</li>
-                    <li>Une fois tous les fichiers souhaités ajoutés, cliquez sur "🔍 Analyser Fichiers".</li>
-                    <li>Un message utilisateur sera automatiquement ajouté à la conversation, indiquant: "J'ai téléversé X fichier(s) ([nom des fichiers]) pour analyse. Peux-tu les examiner ?"</li>
-                    <li>L'IA prendra alors le relais. Un indicateur de chargement ("spinner") peut apparaître pendant que l'IA traite les fichiers.</li>
-                    <li>Les résultats de l'analyse seront postés dans la zone de chat sous forme d'un message de l'assistant. Le format de la réponse peut varier (résumé, liste à puces, tableau) en fonction du contenu des documents et du profil expert actif.</li>
-                </ol>
-                <h4>Conseils pour une Analyse Efficace :</h4>
-                <ul>
-                    <li><strong>Fichiers clairs et lisibles :</strong> La qualité de l'analyse dépend de la qualité des documents fournis.</li>
-                    <li><strong>Contexte :</strong> Après l'analyse, n'hésitez pas à poser des questions spécifiques sur certaines parties des documents. Par exemple: "Dans le PDF 'Plan_Ensemble_01', quelle est la spécification pour la soudure de la section A-A ?"</li>
-                    <li><strong>Analyse de plusieurs fichiers :</strong> Si vous téléversez plusieurs fichiers, l'IA tentera souvent de faire une synthèse ou de trouver des liens entre eux, si pertinent. Vous pouvez aussi la guider : "Compare les spécifications de ces deux fiches techniques."</li>
-                </ul>
-                <div class="warning">
-                    <strong>Limites :</strong> L'IA ne peut pas "exécuter" de code présent dans les fichiers, ni interagir avec des éléments dynamiques (macros Excel, formulaires PDF interactifs). L'analyse des images complexes ou très détaillées peut avoir ses limites. Pour les PDF basés uniquement sur des images, la reconnaissance optique de caractères (OCR) n'est pas explicitement garantie et dépend des capacités sous-jacentes de l'IA.
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <h3 id="recherche-web">4.4 Exploiter la Puissance de la Recherche Web Intégrée</h3>
-                <p>La fonction de recherche web permet à l'IA d'accéder à des informations potentiellement plus récentes ou très spécifiques non incluses dans sa base de formation initiale ou dans les profils experts.</p>
-                <h4>Comment l'Utiliser :</h4>
-                <p>Dans le champ de saisie du chat, tapez la commande <code>/search</code> suivie de votre question ou des mots-clés de recherche.</p>
-                <pre><code>/search dernières normes CSA pour la soudure robotisée de l'acier HSS</code></pre>
-                <pre><code>/search fournisseurs de tubes DOM certifiés ISO 9001 au Québec</code></pre>
-                <pre><code>/search prix actuel de l'acier A36 en Amérique du Nord</code></pre>
-                <h4>Que se Passe-t-il Ensuite ?</h4>
-                <ol>
-                    <li>L'IA interprète votre requête de recherche.</li>
-                    <li>Elle utilise ses outils internes pour interroger des sources web pertinentes.</li>
-                    <li>Elle synthétise les informations trouvées et vous les présente sous une forme lisible et structurée dans la zone de chat. Cela peut inclure des résumés, des points clés, et parfois des liens vers les sources (selon les capacités de l'IA).</li>
-                </ol>
-                <h4>Conseils pour des Recherches Web Efficaces :</h4>
-                <ul>
-                    <li><strong>Mots-clés précis :</strong> Utilisez des termes techniques et spécifiques à votre domaine.</li>
-                    <li><strong>Langage naturel :</strong> Vous pouvez formuler votre recherche comme une question.</li>
-                    <li><strong>Recherche sur site spécifique :</strong> Pour cibler un site web particulier, ajoutez <code>site:nomdusite.com</code> à votre requête.
-                        <pre><code>/search spécifications techniques diables DG-600 site:dg-inc.qc.ca</code></pre>
-                    </li>
-                    <li><strong>Combiner avec le chat :</strong> Après avoir reçu les résultats de la recherche, vous pouvez poser des questions de suivi à l'IA sur les informations obtenues.</li>
-                </ul>
-                 <div class="note">
-                    <strong>Fiabilité des sources :</strong> Bien que l'IA s'efforce de fournir des informations précises, il est toujours recommandé de faire preuve de discernement critique envers les informations obtenues via des recherches web, comme vous le feriez avec n'importe quel moteur de recherche. L'IA synthétise ce qu'elle trouve.
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <h3 id="historique">4.5 Gérer et Consulter l'Historique des Conversations</h3>
-                <p>L'historique est un outil précieux pour retrouver des informations, reprendre des discussions ou analyser des travaux passés.</p>
-                <h4>Fonctionnement de la Sauvegarde :</h4>
-                <p>Les conversations sont généralement sauvegardées automatiquement dans les situations suivantes :</p>
-                <ul>
-                    <li>Après l'envoi d'un message par l'utilisateur.</li>
-                    <li>Avant le démarrage d'une "Nouvelle Consultation".</li>
-                    <li>Avant le changement d'un "Profil Expert".</li>
-                    <li>Avant le chargement d'une conversation depuis l'historique.</li>
-                </ul>
-                <p>Une conversation qui ne contient que le message d'accueil initial de l'IA et aucune interaction de l'utilisateur n'est généralement pas sauvegardée pour éviter d'encombrer l'historique.</p>
-                <h4>Utilisation de l'Historique (Panneau Latéral) :</h4>
-                <ul>
-                    <li><strong>Affichage :</strong> La liste montre les conversations par leur "nom" (souvent généré à partir des premiers mots de votre première question dans cette conversation) et leur date de dernière mise à jour. Les plus récentes apparaissent en haut.</li>
-                    <li><strong>Chargement :</strong>
-                        <ol>
-                            <li>Identifiez la conversation que vous souhaitez revoir.</li>
-                            <li>Cliquez sur son nom.</li>
-                            <li>La conversation sélectionnée s'affichera intégralement dans la zone de chat principale, remplaçant la conversation qui y était active (cette dernière étant sauvegardée avant le changement).</li>
-                        </ol>
-                    </li>
-                    <li><strong>Suppression :</strong>
-                        <ol>
-                            <li>Localisez la conversation à supprimer.</li>
-                            <li>Cliquez sur l'icône poubelle (🗑️) située à droite du nom de la conversation.</li>
-                            <li>La conversation sera immédiatement et définitivement supprimée de la base de données. <strong>Attention, il n'y a pas de corbeille ni de confirmation.</strong></li>
-                        </ol>
-                    </li>
-                </ul>
-                <div class="tip">
-                    <strong>Nommer implicitement vos conversations :</strong> Comme le nom de la conversation est souvent basé sur votre première question, essayez de commencer une nouvelle discussion importante par une question claire et distinctive. Cela facilitera la recherche ultérieure dans l'historique.
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <h3 id="export">4.6 Exporter des Rapports de Conversation Professionnels</h3>
-                <p>L'export HTML vous permet de créer un document autonome de votre conversation, facile à partager, archiver ou imprimer.</p>
-                <h4>Procédure d'Exportation :</h4>
-                <ol>
-                    <li>Assurez-vous que la conversation que vous souhaitez exporter est actuellement active dans la zone de chat principale.</li>
-                    <li>Dans le panneau latéral, localisez la section "📥 Export".</li>
-                    <li><strong>Nom client (optionnel) :</strong> Si vous souhaitez que le rapport mentionne un client spécifique ou une référence de projet, saisissez-la dans ce champ. Ce nom sera inclus dans l'en-tête du rapport HTML.</li>
-                    <li>Cliquez sur le bouton "📄 Rapport HTML". L'application va alors générer le contenu du rapport en mémoire. Un message de succès ("Rapport prêt.") devrait s'afficher brièvement.</li>
-                    <li>Suite à la génération, un nouveau bouton "⬇️ Télécharger HTML" apparaîtra juste en dessous. Cliquez sur ce bouton.</li>
-                    <li>Votre navigateur vous proposera alors de sauvegarder un fichier <code>.html</code>. Le nom du fichier sera structuré (par exemple: <code>Rapport_Desmarais_&_Gagné_Conv[ID]_[DateHeure].html</code>).</li>
-                </ol>
-                <h4>Contenu du Rapport HTML :</h4>
-                <p>Le fichier HTML généré inclura :</p>
-                <ul>
-                    <li>Un en-tête avec "Rapport Desmarais & Gagné".</li>
-                    <li>Le nom du profil expert utilisé durant la conversation.</li>
-                    <li>Le nom du client (si fourni).</li>
-                    <li>La date et l'heure de génération du rapport.</li>
-                    <li>L'ID de la conversation (si elle a déjà été sauvegardée).</li>
-                    <li>L'intégralité des messages échangés (utilisateur et assistant), présentés dans un format de chat lisible, avec les couleurs et le style de l'application.</li>
-                    <li>Le contenu Markdown (listes, tableaux, code) sera correctement rendu en HTML.</li>
-                </ul>
-                <div class="note">
-                    <strong>Autonomie du fichier :</strong> Le fichier HTML exporté est autonome. Il contient tous les styles CSS nécessaires à son affichage et ne dépend pas d'une connexion à l'application. Vous pouvez l'ouvrir dans n'importe quel navigateur web.
-                </div>
-            </div>
-        </section>
-
-        <section id="bonnes-pratiques">
-            <h2>5. Bonnes Pratiques et Conseils d'Utilisation</h2>
-            <ul>
-                <li><strong>Formulez des questions claires et concises :</strong> Plus votre demande est précise, meilleure sera la réponse de l'IA. Évitez les ambiguïtés.</li>
-                <li><strong>Utilisez les profils experts à bon escient :</strong> Choisissez le profil le plus adapté à la nature de votre requête pour obtenir des réponses spécialisées.</li>
-                <li><strong>Décomposez les tâches complexes :</strong> Pour des analyses ou des questions multifacettes, segmentez votre demande en plusieurs interactions.</li>
-                <li><strong>Vérifiez les informations critiques :</strong> Bien que l'IA soit conçue pour être précise, pour des données cruciales (estimations finales, spécifications critiques), une validation humaine reste recommandée.</li>
-                <li><strong>Exploitez l'historique :</strong> Revoyez les conversations passées pour éviter de répéter des questions ou pour retrouver des informations utiles.</li>
-                <li><strong>Donnez du feedback (si possible) :</strong> Si un mécanisme de feedback est implémenté ultérieurement, utilisez-le pour aider à améliorer les performances de l'IA.</li>
-                <li><strong>Soyez patient avec les analyses complexes :</strong> L'analyse de gros documents ou les requêtes nécessitant des recherches web approfondies peuvent prendre quelques instants.</li>
-                <li><strong>Utilisez la fonction d'export :</strong> Archivez les conversations importantes ou partagez des rapports clairs avec vos collègues ou clients.</li>
-                <li><strong>Consultez régulièrement ce manuel :</strong> De nouvelles fonctionnalités ou des mises à jour des fonctionnalités existantes pourraient y être documentées.</li>
-            </ul>
-        </section>
-
-        <section id="depannage">
-            <h2>6. Dépannage Courant et Foire Aux Questions (FAQ)</h2>
-            <dl>
-                <dt><strong>L'application est lente ou ne répond pas.</strong></dt>
-                <dd>Vérifiez votre connexion internet. Essayez de rafraîchir la page (F5 ou Ctrl+R / Cmd+R). Si le problème persiste, l'application ou le serveur pourraient rencontrer des difficultés temporaires. Réessayez plus tard ou contactez le support.</dd>
-
-                <dt><strong>L'application affiche "Erreur d'importation des modules locaux" ou "Erreur critique: ANTHROPIC_API_KEY non configurée".</strong></dt>
-                <dd>Ceci est généralement un problème de configuration côté serveur, souvent lié aux clés d'API nécessaires au fonctionnement de l'IA. Veuillez signaler ce problème à votre administrateur système ou au support technique de Desmarais & Gagné.</dd>
-
-                <dt><strong>J'ai oublié mon mot de passe / Mon mot de passe ne fonctionne plus.</strong></dt>
-                <dd>Contactez votre administrateur système ou le responsable de l'application pour une réinitialisation ou une vérification du mot de passe.</dd>
-
-                <dt><strong>L'analyse de document échoue systématiquement pour un type de fichier spécifique.</strong></dt>
-                <dd>Assurez-vous que le format est bien listé parmi les formats supportés. Il se peut aussi que le fichier soit corrompu ou protégé par mot de passe (ce que l'IA ne peut généralement pas outrepasser). Essayez avec un autre fichier du même type mais plus simple. Si le problème persiste pour des fichiers valides, signalez-le.</dd>
-
-                <dt><strong>Les résultats de la recherche web semblent obsolètes ou incorrects.</strong></dt>
-                <dd>La fraîcheur des informations dépend des capacités de l'outil de recherche de l'IA. Pour des données très récentes ou sujettes à des changements rapides (comme les prix de marché), il est toujours bon de croiser les sources. Vous pouvez aussi essayer de reformuler votre requête pour cibler des sources plus officielles.</dd>
-                
-                <dt><strong>Puis-je utiliser l'application sur mon téléphone mobile ou ma tablette ?</strong></dt>
-                <dd>L'application est conçue pour être responsive et devrait fonctionner sur les appareils mobiles. Cependant, l'expérience utilisateur optimale (notamment pour la gestion de fichiers multiples ou la lecture de longs rapports) est généralement obtenue sur un ordinateur de bureau. Des ajustements de style sont appliqués pour les petits écrans.</dd>
-
-                <dt><strong>Où sont stockées mes conversations ? Sont-elles sécurisées ?</strong></dt>
-                <dd>Les conversations sont stockées dans une base de données locale au serveur sur lequel l'application est hébergée (par exemple, `conversations.db`). Les mesures de sécurité dépendent de la configuration globale de ce serveur. Pour des détails précis sur la politique de sécurité et de confidentialité des données, veuillez consulter la documentation interne de Desmarais & Gagné ou contacter votre responsable.</dd>
-            </dl>
-        </section>
-
-        <section id="contact">
-            <h2>7. Contact et Support Technique</h2>
-            <p>Si vous rencontrez des difficultés non adressées dans ce manuel, si vous avez des questions spécifiques sur l'utilisation avancée de l'outil, ou si vous souhaitez faire des suggestions d'amélioration, n'hésitez pas à contacter l'équipe de support désignée au sein de Desmarais & Gagné ou votre responsable direct.</p>
-            <p>Pour les coordonnées générales de l'entreprise :</p>
-            <p><strong>Desmarais & Gagné inc.</strong><br>
-            📧 Email : <a href="mailto:info@dg-inc.qc.ca">info@dg-inc.qc.ca</a><br>
-            📞 Téléphone : (450) 372-9630<br>
-            🌐 Site Web : <a href="https://www.dg-inc.qc.ca" target="_blank">www.dg-inc.qc.ca</a>
-            </p>
-            <div class="tip">
-                <strong>Pour un support efficace :</strong> Lorsque vous contactez le support, essayez de fournir autant de détails que possible sur le problème rencontré :
-                <ul>
-                    <li>Quelle action essayiez-vous d'effectuer ?</li>
-                    <li>Quel profil expert était sélectionné ?</li>
-                    <li>Quels messages d'erreur (s'il y en a) se sont affichés ?</li>
-                    <li>Si possible, une capture d'écran du problème peut être très utile.</li>
-                </ul>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2024-2025 Desmarais & Gagné. Tous droits réservés.</p>
-            <p>Ce manuel d'utilisation a été généré pour vous assister dans l'utilisation optimale de l'Assistant Expert AI.</p>
+        <footer class="footer">
+            <p><strong>© 2025 Constructo AI - Sylvain Leduc - Tous droits réservés</strong></p>
+            <p><em>La révolution IA de la construction québécoise</em></p>
+            <p><span class="emoji">🏗️</span> <strong>Bon travail avec Constructo AI 3.0 !</strong> <span class="emoji">🚀</span></p>
         </footer>
     </div>
 </body>
